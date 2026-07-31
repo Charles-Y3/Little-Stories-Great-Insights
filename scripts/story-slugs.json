@@ -1,0 +1,63 @@
+[
+  {
+    "file": "angel-of-the-flowers.png",
+    "originalFile": "花的天使.png",
+    "slug": "angel-of-the-flowers",
+    "titleZh": "花的天使"
+  },
+  {
+    "file": "watch-your-step.png",
+    "originalFile": "看腳下.png",
+    "slug": "watch-your-step",
+    "titleZh": "看腳下"
+  },
+  {
+    "file": "fire-in-the-tower.png",
+    "originalFile": "高樓失火.png",
+    "slug": "fire-in-the-tower",
+    "titleZh": "高樓失火"
+  },
+  {
+    "file": "which-road-to-choose.png",
+    "originalFile": "選擇那一條路.png",
+    "slug": "which-road-to-choose",
+    "titleZh": "選擇那一條路"
+  },
+  {
+    "file": "bu-shang-umbrella.png",
+    "originalFile": "ト商有傘.png",
+    "slug": "bu-shang-umbrella",
+    "titleZh": "卜商有傘",
+    "note": "Original filename contains U+30C8 KATAKANA LETTER TO (ト), not U+535C 卜 — a lookalike substitution, not a display artifact. The true title is 卜商有傘 (Zixia's Umbrella); confirmed against the pasted story text, not against the filename."
+  },
+  {
+    "file": "hungry-ghosts-and-gods.png",
+    "originalFile": "餓鬼與天神.png",
+    "slug": "hungry-ghosts-and-gods",
+    "titleZh": "餓鬼與天神"
+  },
+  {
+    "file": "fotudeng.png",
+    "originalFile": "佛圖澄.png",
+    "slug": "fotudeng",
+    "titleZh": "佛圖澄"
+  },
+  {
+    "file": "our-ladys-answer.png",
+    "originalFile": "聖母的回答.png",
+    "slug": "our-ladys-answer",
+    "titleZh": "聖母的回答"
+  },
+  {
+    "file": "the-bamboo-repays.png",
+    "originalFile": "竹子的回報.png",
+    "slug": "the-bamboo-repays",
+    "titleZh": "竹子的回報"
+  },
+  {
+    "file": "why-the-buddha-did-not-speak.png",
+    "originalFile": "世尊何故不說法.png",
+    "slug": "why-the-buddha-did-not-speak",
+    "titleZh": "世尊何故不說法"
+  }
+]

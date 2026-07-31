@@ -1,0 +1,53 @@
+/* Accent bar in every theme: tokens already flip for light / dark / sepia. */
+.banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2) var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  padding-top: max(var(--space-2), env(safe-area-inset-top));
+  background: var(--color-accent-strong);
+  color: var(--color-accent-ink);
+  font-size: var(--step--1);
+  font-family: var(--font-zh);
+  box-shadow: var(--shadow-md);
+}
+
+.body {
+  text-align: center;
+  line-height: 1.4;
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-2);
+  align-items: center;
+}
+
+.later {
+  color: var(--color-accent-ink) !important;
+  border-color: color-mix(in srgb, var(--color-accent-ink) 45%, transparent) !important;
+  background: transparent !important;
+}
+
+.later:hover:not(:disabled) {
+  background: color-mix(in srgb, var(--color-accent-ink) 12%, transparent) !important;
+}
+
+/* Inverted CTA on the accent bar: surface fill + accent label (readable in all themes). */
+.banner :global(button[class*="primary"]) {
+  background: var(--color-surface) !important;
+  color: var(--color-accent-strong) !important;
+  border-color: var(--color-surface) !important;
+  box-shadow: none;
+}
+
+.banner :global(button[class*="primary"]):hover:not(:disabled) {
+  filter: brightness(1.06);
+}

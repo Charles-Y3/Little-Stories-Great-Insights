@@ -1,0 +1,59 @@
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-3);
+  padding: var(--space-6) var(--space-3);
+}
+
+.title {
+  margin: 0;
+  display: grid;
+  font-size: var(--step-3);
+  font-family: var(--font-display);
+  color: var(--color-ink);
+}
+
+/* Layout-stable bilingual swap: both languages occupy the same grid cell so
+   toggling language never reflows the hero — matches the sibling project's
+   Home.jsx pattern (visibility, not display, so layout is measured once). */
+.title > span {
+  grid-area: 1 / 1;
+}
+
+.stackVisible {
+  visibility: visible;
+}
+
+.stackHidden {
+  visibility: hidden;
+}
+
+.tagline {
+  margin: 0;
+  max-width: 26rem;
+  color: var(--color-ink-soft);
+  line-height: 1.7;
+}
+
+.actions {
+  width: 100%;
+  max-width: 20rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  margin-top: var(--space-3);
+}
+
+/* Link is inline by default; without this the `block` Button inside it has
+   nothing block-level to stretch against and won't actually fill the row. */
+.actions > a {
+  display: block;
+}

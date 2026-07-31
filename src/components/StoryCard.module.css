@@ -1,0 +1,120 @@
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: grid;
+  place-items: center;
+  perspective: var(--card-perspective);
+  padding: var(--space-4);
+  padding-top: max(var(--space-4), env(safe-area-inset-top));
+  padding-bottom: max(var(--space-4), env(safe-area-inset-bottom));
+  background: var(--color-bg-grad);
+}
+
+.scene:focus-visible {
+  outline: none;
+}
+
+.card {
+  position: relative;
+  aspect-ratio: 768 / 1376;
+  height: min(100%, 92dvh);
+  max-width: 100%;
+  transform-style: preserve-3d;
+  transition: transform var(--card-flip-duration) var(--ease);
+}
+
+.card[data-face="back"] {
+  transform: rotateY(180deg);
+}
+
+/* Same double-border "frame" idiom as AppShell.module.css .frame/.frame::before
+   (and StoryTile), reused here so the card reads as the same physical
+   material as the rest of the app — and it's CSS on both faces, so it's
+   identical, survives object-fit, and works with border-radius, per the
+   original design constraint (no baked-in borders in the artwork). */
+.face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  border: 1px solid var(--color-border-strong);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  /* Safari's backface-visibility gets unreliable once a face has its own
+     stacking context (filters, backdrop-filter on the rail buttons, etc).
+     Flipping `visibility` at the animation midpoint is a hard guarantee
+     regardless — and it also drops the hidden face from the accessibility
+     tree and out of tab order, for free. */
+  transition: visibility 0s linear calc(var(--card-flip-duration) / 2);
+}
+
+.face::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--color-border);
+  border-radius: calc(var(--radius-lg) - 8px);
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+.back {
+  transform: rotateY(180deg);
+  background: var(--story-tint);
+}
+
+.card[data-face="back"] .front {
+  visibility: hidden;
+}
+
+.card[data-face="front"] .back {
+  visibility: hidden;
+}
+
+/* This is the fix for the specific failure mode documented in base.css: the
+   app-wide reduced-motion rule zeroes out *transition-duration*, which kills
+   the flip's transition but does NOTHING about the `rotateY(180deg)`
+   transform itself — so without this block, reduced-motion users would see
+   an instant snap to a mirror-imaged, backwards-reading back face. Removing
+   `transform` here is the load-bearing line; the rest is just a clean
+   cross-fade instead (which the global rule then collapses to an instant
+   swap, correctly and consistently with the rest of the app). */
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .back {
+    transform: none !important;
+  }
+  .face {
+    transition: opacity var(--duration-med) var(--ease);
+  }
+  .card[data-face="back"] .front {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .card[data-face="back"] .back {
+    opacity: 1;
+    visibility: visible;
+  }
+  .card[data-face="front"] .back {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .card[data-face="front"] .front {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.srAnnounce {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

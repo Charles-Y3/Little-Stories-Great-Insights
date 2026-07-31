@@ -1,0 +1,183 @@
+import React, { useEffect, useRef, useState } from "react";
+import { useSettings, THEMES } from "../context/SettingsContext";
+import Button from "./Button";
+import ConfirmDialog from "./ConfirmDialog";
+import { downloadBackup, readBackupFile, applyBackup, isValidBackup } from "../utils/backup";
+import {
+  subscribePwaInstall,
+  getDeferredInstallPrompt,
+  promptPwaInstall,
+  isStandaloneDisplay,
+  installGuideKind
+} from "../utils/pwaInstall";
+import { subscribeOfflineReady } from "../utils/offlineReady";
+import styles from "./SettingsPopover.module.css";
+
+const THEME_LABELS = {
+  light: { zh: "亮色", en: "Light" },
+  dark: { zh: "暗色", en: "Dark" },
+  sepia: { zh: "復古", en: "Sepia" }
+};
+
+export default function SettingsPopover({ open, onClose }) {
+  const { language, theme, setLanguage, setTheme } = useSettings();
+  const panelRef = useRef(null);
+  const fileInputRef = useRef(null);
+  const [installAvailable, setInstallAvailable] = useState(false);
+  const [offlineReady, setOfflineReady] = useState(false);
+  const [pendingImport, setPendingImport] = useState(null);
+  const [importError, setImportError] = useState("");
+
+  useEffect(() => subscribePwaInstall(() => setInstallAvailable(Boolean(getDeferredInstallPrompt()))), []);
+  useEffect(() => subscribeOfflineReady(setOfflineReady), []);
+
+  useEffect(() => {
+    if (!open) return undefined;
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+    };
+    const onClickOutside = (e) => {
+      if (panelRef.current && !panelRef.current.contains(e.target)) onClose();
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("mousedown", onClickOutside);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("mousedown", onClickOutside);
+    };
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  const standalone = isStandaloneDisplay();
+  const guide = installGuideKind();
+
+  const handleFilePick = () => fileInputRef.current?.click();
+
+  const handleFileChange = async (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    try {
+      const obj = await readBackupFile(file);
+      if (!isValidBackup(obj)) {
+        setImportError(language === "zh" ? "備份檔案格式不正確。" : "That doesn't look like a valid backup file.");
+        return;
+      }
+      setImportError("");
+      setPendingImport(obj);
+    } catch {
+      setImportError(language === "zh" ? "無法讀取備份檔案。" : "Could not read that file.");
+    }
+  };
+
+  const confirmImport = () => {
+    if (!pendingImport) return;
+    applyBackup(pendingImport);
+    setPendingImport(null);
+    window.location.reload();
+  };
+
+  return (
+    <>
+      <div
+        className={styles.panel}
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label={language === "zh" ? "設定" : "Settings"}
+      >
+        <section className={styles.section}>
+          <h3 className={styles.heading}>{language === "zh" ? "語言" : "Language"}</h3>
+          <div className={styles.row}>
+            <Button size="sm" variant={language === "zh" ? "primary" : "ghost"} onClick={() => setLanguage("zh")}>
+              中文
+            </Button>
+            <Button size="sm" variant={language === "en" ? "primary" : "ghost"} onClick={() => setLanguage("en")}>
+              English
+            </Button>
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h3 className={styles.heading}>{language === "zh" ? "主題" : "Theme"}</h3>
+          <div className={styles.row}>
+            {THEMES.map((t) => (
+              <Button key={t} size="sm" variant={theme === t ? "primary" : "ghost"} onClick={() => setTheme(t)}>
+                {THEME_LABELS[t][language]}
+              </Button>
+            ))}
+          </div>
+        </section>
+
+        <section className={styles.section}>
+          <h3 className={styles.heading}>{language === "zh" ? "應用程式" : "App"}</h3>
+          {standalone ? (
+            <p className={styles.hint}>{language === "zh" ? "已安裝為應用程式。" : "Installed as an app."}</p>
+          ) : installAvailable ? (
+            <Button size="sm" variant="gold" block onClick={() => promptPwaInstall()}>
+              {language === "zh" ? "安裝應用程式" : "Install app"}
+            </Button>
+          ) : guide === "ios" ? (
+            <p className={styles.hint}>
+              {language === "zh"
+                ? "在 Safari 中點擊「分享」→「加入主畫面」即可安裝。"
+                : "In Safari, tap Share → Add to Home Screen to install."}
+            </p>
+          ) : (
+            <p className={styles.hint}>
+              {language === "zh" ? "此瀏覽器目前無法安裝。" : "Install isn't available in this browser yet."}
+            </p>
+          )}
+          <p className={styles.hint}>
+            {offlineReady
+              ? language === "zh"
+                ? "✓ 已可離線使用"
+                : "✓ Ready to work offline"
+              : language === "zh"
+                ? "尚未完成離線快取"
+                : "Not yet cached for offline use"}
+          </p>
+        </section>
+
+        <section className={styles.section}>
+          <h3 className={styles.heading}>{language === "zh" ? "備份與還原" : "Backup & Restore"}</h3>
+          <div className={styles.row}>
+            <Button size="sm" variant="ghost" onClick={() => downloadBackup()}>
+              {language === "zh" ? "匯出備份" : "Export backup"}
+            </Button>
+            <Button size="sm" variant="ghost" onClick={handleFilePick}>
+              {language === "zh" ? "匯入備份" : "Import backup"}
+            </Button>
+          </div>
+          <input
+            ref={fileInputRef}
+            type="file"
+            accept="application/json"
+            className={styles.fileInput}
+            onChange={handleFileChange}
+          />
+          {importError && <p className={styles.error}>{importError}</p>}
+        </section>
+
+        <Button size="sm" variant="ghost" block onClick={onClose}>
+          {language === "zh" ? "關閉" : "Close"}
+        </Button>
+      </div>
+
+      <ConfirmDialog
+        open={Boolean(pendingImport)}
+        title={language === "zh" ? "覆蓋目前資料？" : "Overwrite current data?"}
+        message={
+          language === "zh"
+            ? "匯入備份將取代目前的心得與設定，且無法復原。"
+            : "Importing will replace your current insights and settings. This can't be undone."
+        }
+        confirmLabel={language === "zh" ? "匯入" : "Import"}
+        cancelLabel={language === "zh" ? "取消" : "Cancel"}
+        onConfirm={confirmImport}
+        onCancel={() => setPendingImport(null)}
+      />
+    </>
+  );
+}
