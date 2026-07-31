@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSettings } from "../context/SettingsContext";
 import stories from "../data/stories";
 import useInsights from "../hooks/useInsights";
 import AppShell from "../components/AppShell";
+import Button from "../components/Button";
+import ConfirmDialog from "../components/ConfirmDialog";
 import HeaderHomeLink from "../components/HeaderHomeLink";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import styles from "./Insights.module.css";
@@ -15,12 +17,19 @@ function formatDate(ts) {
 export default function Insights() {
   const { language } = useSettings();
   useDocumentTitle(language === "zh" ? "我的心得" : "My Insights");
-  const { insights } = useInsights();
+  const { insights, removeInsight } = useInsights();
+  const [pendingDelete, setPendingDelete] = useState(null);
 
   const rows = insights
     .map((entry) => ({ entry, story: stories.find((s) => s.id === entry.slug) }))
     .filter((r) => r.story)
     .sort((a, b) => b.entry.updatedAt - a.entry.updatedAt);
+
+  const confirmDelete = () => {
+    if (!pendingDelete) return;
+    removeInsight(pendingDelete.slug);
+    setPendingDelete(null);
+  };
 
   return (
     <AppShell header={<HeaderHomeLink language={language} />}>
@@ -31,7 +40,7 @@ export default function Insights() {
       ) : (
         <ul className={styles.list}>
           {rows.map(({ entry, story }) => (
-            <li key={entry.slug}>
+            <li key={entry.slug} className={styles.item}>
               <Link to={`/stories/${encodeURIComponent(entry.slug)}?insight=1`} className={styles.row}>
                 <img src={story.image.thumb} alt="" className={styles.thumb} loading="lazy" />
                 <div className={styles.rowBody}>
@@ -44,10 +53,34 @@ export default function Insights() {
                   <span className={styles.rowDate}>{formatDate(entry.updatedAt)}</span>
                 </div>
               </Link>
+              <Button
+                variant="ghost"
+                icon
+                className={styles.deleteBtn}
+                onClick={() => setPendingDelete({ slug: entry.slug, title: story.title[language] })}
+                aria-label={language === "zh" ? "刪除心得" : "Delete insight"}
+                title={language === "zh" ? "刪除心得" : "Delete insight"}
+              >
+                ✕
+              </Button>
             </li>
           ))}
         </ul>
       )}
+
+      <ConfirmDialog
+        open={Boolean(pendingDelete)}
+        title={language === "zh" ? "刪除這則心得？" : "Delete this insight?"}
+        message={
+          language === "zh"
+            ? `確定要刪除「${pendingDelete?.title || ""}」的心得？此操作無法復原。`
+            : `Delete your insight for “${pendingDelete?.title || ""}”? This can't be undone.`
+        }
+        confirmLabel={language === "zh" ? "刪除" : "Delete"}
+        cancelLabel={language === "zh" ? "取消" : "Cancel"}
+        onConfirm={confirmDelete}
+        onCancel={() => setPendingDelete(null)}
+      />
     </AppShell>
   );
 }

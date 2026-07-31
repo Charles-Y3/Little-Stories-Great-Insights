@@ -5,11 +5,12 @@ export default {
   tags: { zh: ["親情", "感恩"], en: ["family", "gratitude"] },
 
   story: {
-    zh: `少年與父親賭氣出走，身無分文，飢寒交迫，在街角徘徊，不知該往何處，夜裡露宿橋下，白日餓得頭暈。路邊麵攤老板見他可憐，端上一碗熱麵，分文不取，只說：「先吃，別餓壞了。」
-少年連聲道謝。老板問：「你對陌生人都這麼客氣，為何回家不對父母說一聲謝？」少年聞言，當下落淚，轉身回家。`,
-    en: `A boy ran away after a fight with his father, penniless and hungry, wandering the street corner with nowhere to go. A noodle seller saw him shivering and set down a hot bowl — no charge. "Eat first," he said. "Don't starve."
-
-The boy thanked him again and again. "You're so polite to a stranger," the seller said. "Why not say thank you to your own parents?" The boy wept — and went home.`
+    zh: `有一對夫婦，養有一子一女，兒子生性叛逆，比較頑強。有一天，兒子放學晚歸，父母質問責備，他一氣之下離家出走，深夜在街上無聊地晃著，晃到一個簡陋的麵攤，想付錢買碗麵吃。麵攤老闆是位好心的爺爺，看這年輕人氣沖沖闖出來，又在街上晃盪，心裡也有數。
+老闆是過來人，看少年掏錢要吃麵，便說：「你餓了吧，不必付錢，我煮碗好吃的清麵給你。」一碗熱騰騰的麵，頓時化解了少年叛逆頑固的心。少年一邊吃，一邊感動落淚，連聲道謝。
+老闆知道他的背景與個性，對他說：「別人對你的一點恩惠，你都感激不盡，但自己家人多年的照顧，你卻視而不見。」這句話點醒了少年，也凸顯了人性的弱點。`,
+    en: `A rebellious son argued with his parents one night and stormed out, wandering the dark streets until he reached a bare noodle stall, meaning to buy a bowl. The old man running it could tell at a glance — a furious boy, out too late, going nowhere.
+He'd been that age once. Seeing the boy reach for his money, he said, "You're hungry — no charge, I'll cook you a good bowl." The boy ate, moved to tears, thanking him again and again.
+Knowing his story, the old man said one thing: "A stranger's smallest kindness earns endless gratitude — your family's years of care, you don't even see." The words woke him, laid bare a flaw in human nature.`
   },
 
   prompts: {

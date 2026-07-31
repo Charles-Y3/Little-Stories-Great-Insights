@@ -5,11 +5,12 @@ export default {
   tags: { zh: ["不變", "無"], en: ["stillness", "limitless"] },
 
   story: {
-    zh: `有一位禪師建了寺院，與道士廟觀為鄰。道士心生不滿，每日以法術變妖邪擾亂寺內，不少僧者離去。禪師卻住了十多年；道士法術用盡，只得遷離。
-有人問：「道士法術高強，汝豈能勝？」禪師云：「我沒什麼能勝，勉強言只有一『無』字。道士有法術——有，乃有限有盡；我無法術——無，乃無限無盡。不變應萬變，我『無變』故勝於『有變』。」`,
-    en: `A Zen master built a temple beside a Daoist shrine. The priest, unsettled, harassed the monks with magic day after day until most fled. The master stayed more than ten years. When the priest's arts ran dry, he abandoned the shrine and left.
-
-"His magic was strong — how did you win?" someone asked. "I have nothing that wins," said the master, "except one word: nothing. Magic is limited and finite. Having none, I am unlimited. Stillness answers every change — the unchanging outlasts the changing."`
+    zh: `有一位禪師建了一所寺院，與道士的廟觀為鄰，道士心中放不下，對這座寺院很不滿，因此每日以法術變些妖邪，擾亂寺內僧眾。今日呼風喚雨，明日風馳電掣，不少僧人因此離去。
+然而這位禪師卻在此住了十多年，道士的法術終於用盡，禪師依然不受影響，道士只好放棄廟觀，遷往他處。
+後來有人問禪師：「道士法術高強，你怎麼勝得過他？」禪師說：「我沒什麼能勝的，勉強說只有一個『無』字能勝過他。」那人又問：「『無』，怎麼能勝過他？」
+禪師說：「道士有法術——『有』，是有限、有盡、有量、有邊的；我沒有法術——『無』，是無限、無盡、無量、無邊的。無與有的關係，就是以不變應萬變，我『無變』，所以勝過『有變』。」`,
+    en: `A Zen master built a temple beside a Daoist shrine. The unsettled priest harassed the monks with magic — wind and rain one day, lightning the next — until many fled. The master stayed over ten years, until the priest's magic ran dry and he abandoned the shrine.
+"His magic was strong — how did you outlast him?" someone asked. "I have nothing that wins," the master said, "only one word: nothing." "How can nothing outlast him?" "He has magic — limited, finite, measured, bounded. Having none, I am unlimited, infinite, boundless. Stillness answers change; my changelessness outlasts his changing."`
   },
 
   prompts: {

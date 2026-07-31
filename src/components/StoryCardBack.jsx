@@ -1,19 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import StoryCardRail from "./StoryCardRail";
 import useTapAway from "../hooks/useTapAway";
 import useReadAloud from "../hooks/useReadAloud";
+import { FONT_STEPS } from "../utils/readingFont";
 import styles from "./StoryCardBack.module.css";
-
-// Discrete reading sizes on the card back. Enlarging past what fits turns on
-// the pane's vertical scrollbar (see overflow sync below) — intentional, so
-// readers can choose comfort over the default no-scroll fit.
-const FONT_STEPS = [
-  { px: 16, label: "A−" },
-  { px: 17, label: "A" },
-  { px: 19, label: "A+" },
-  { px: 21, label: "A++" }
-];
-const DEFAULT_STEP = 1;
 
 // Same note as StoryCardFront: no outer face/positioning here, that lives in
 // the single shared StoryCard.module.css so cross-face CSS selectors work.
@@ -29,19 +19,18 @@ export default function StoryCardBack({
   onFlip,
   onHome,
   onCatalog,
+  fontStep,
+  onCycleFontSize,
   titleId,
   headingRef
 }) {
   const paneRef = useRef(null);
   const textRef = useRef(null);
   const tapAway = useTapAway(onFlip);
-  const [fontStep, setFontStep] = useState(DEFAULT_STEP);
 
   const storyText = String(story.story[contentLanguage] || "");
   const { speaking, toggle: toggleReadAloud, supported: speechSupported, stop: stopSpeech } =
     useReadAloud(storyText, contentLanguage);
-
-  const cycleFontSize = () => setFontStep((i) => (i + 1) % FONT_STEPS.length);
 
   const handleBack = () => {
     stopSpeech();
@@ -78,7 +67,7 @@ export default function StoryCardBack({
     .split(/\n+/)
     .map((p) => p.trim())
     .filter(Boolean);
-  const font = FONT_STEPS[fontStep];
+  const font = FONT_STEPS[fontStep] || FONT_STEPS[1];
 
   return (
     <div className={styles.content} {...tapAway}>
@@ -111,7 +100,7 @@ export default function StoryCardBack({
         onHome={onHome}
         onOpenInsight={onOpenInsight}
         insightDisabled={insightDisabled}
-        onCycleFontSize={cycleFontSize}
+        onCycleFontSize={onCycleFontSize}
         fontSizeLabel={font.label}
         onToggleContentLanguage={onToggleContentLanguage}
         onReadAloud={toggleReadAloud}

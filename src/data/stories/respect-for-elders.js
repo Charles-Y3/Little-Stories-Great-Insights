@@ -5,11 +5,12 @@ export default {
   tags: { zh: ["長輩", "尊重"], en: ["elders", "respect"] },
 
   story: {
-    zh: `朝中老臣、宿儒年高，有人奉養周全，卻只當寵物豢養，飲食起居無不周到，言論一出口，便笑其迂腐過時，無人肯聽，更無人請教，連奏章也無人代筆，老人只得獨坐空庭。
-久而久之，老人閉口不言，朝堂也少了歷史的記憶。裂隙往往從不尊重開始，而非從無才開始。`,
-    en: `In court, aged ministers and scholars were well fed and well housed — kept like pets. Their meals were perfect, their rooms warm. But the moment they spoke, younger officials laughed: outdated, irrelevant, not worth hearing. No one asked for their counsel; no one even helped draft their memorials.
-
-In time the elders fell silent — and the court lost its memory. The break often starts with disrespect, not with lack of talent.`
+    zh: `管仲與晏嬰，曾是一國的重臣，他們治理國家，遠慮以防近憂，政事上處處用心，因此百姓感受到他們對國家的用心，也感念他們修整法律、輔助君王、治理家國、感化萬民的精神。
+但歲月不饒人，他們終究會老去，不再像從前那樣健壯——這時候，是否也會受到後生晚輩的輕視？或者只用豐盛的三餐堵住他們的口，給他們舒適的環境、卻限制他們的行動，這樣與飼養犬馬又有什麼不同？
+又或者嫌他們說話太拘泥、太刻板，不合時宜，認為他們只是倚老賣老，向後生誇耀自己當年的功績。年高學問深的宿儒，也不過是想讓後輩知道自己當年的作為，後輩卻當耳邊風，於是產生斷層、代溝。這一切，根源都在於不敬老。`,
+    en: `Guan Zhong and Yan Ying once served as chief ministers, governing with far-sighted care, attentive to every detail — the people felt their devotion to the law, the ruler, the realm, the people.
+But time spares no one. Grown old, less vigorous, they risk the young looking down on them — or being fed well just to stay quiet, comfortable but stripped of any real role. How is that different from keeping a pet?
+Or their words get dismissed as rigid, out of step — old men trading on their age. Even the wisest elders, wanting to be heard, meet only a deaf ear. That gap has one root: a lack of respect for elders.`
   },
 
   prompts: {

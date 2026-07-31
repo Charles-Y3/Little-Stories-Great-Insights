@@ -5,11 +5,10 @@ export default {
   tags: { zh: ["創業", "凝聚力"], en: ["startup", "cohesion"] },
 
   story: {
-    zh: `公司草創時，兩個人各出百分之百，夜以繼日，心往一處想，力往一處使，雖苦猶甘，連泡麵都分著吃，睡辦公室也心甘情願。後來人多了、業務大了，各自為政，會議冗長，推諉增多，那股衝勁漸漸散失，人人忙各自的，少有人再問：我們為何而戰？
-不是市場輸了，是內部的凝聚力先散了。`,
-    en: `When the company started, two people gave one hundred percent each — long nights, one shared aim, one shared effort. Hard as it was, they did not mind; they even split the instant noodles between them. Then the team grew, business expanded, and people pulled in different directions. Meetings grew longer, blame grew louder, and the early fire faded. Everyone stayed busy — but few still asked: what are we fighting for?
-
-The market didn't defeat them first. Cohesion did.`
+    zh: `想想看，一家公司剛成立時，也許就只有兩個人：一個是老闆，一個是員工。正因為是草創之初，這兩個人都投入了百分之百的心力，讓公司漸漸步上軌道，兩人都願意付出、願意犧牲。反而是公司業績迅速成長之後，人員龐大、架構複雜、問題累積，把整個公司拖垮了。為什麼人多了，公司反而會倒呢？
+因為每個人對公司的向心力已經失去了，沒有一個人會想到「這家公司整體的利益」，於是產生無數的問題。人少的時候，才能妥善地引領、教育，讓基礎穩固。`,
+    en: `When a company starts, it might just be two people — an owner and an employee. Because it's early days, both give everything, and the company slowly finds its footing, both willing to sacrifice. Only after fast growth — more people, more complexity, more problems piling up — does it all collapse. Why would more people sink a company?
+Because everyone's already lost their sense of belonging — no one thinks of "the company's interest as a whole" anymore, and that's where the endless problems come from. Fewer people means you can guide and teach them well enough to keep the foundation solid.`
   },
 
   prompts: {

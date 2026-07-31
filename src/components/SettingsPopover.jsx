@@ -112,7 +112,7 @@ export default function SettingsPopover({ open, onClose }) {
 
         <section className={styles.section}>
           <h3 className={styles.heading}>{language === "zh" ? "主題" : "Theme"}</h3>
-          <div className={styles.row}>
+          <div className={styles.themeRow}>
             {THEMES.map((t) => (
               <Button key={t} size="sm" variant={theme === t ? "primary" : "ghost"} onClick={() => setTheme(t)}>
                 {THEME_LABELS[t][language]}

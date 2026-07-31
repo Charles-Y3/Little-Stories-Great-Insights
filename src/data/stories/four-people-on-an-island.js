@@ -5,11 +5,14 @@ export default {
   tags: { zh: ["責任", "推諉"], en: ["responsibility", "blame"] },
 
   story: {
-    zh: `島上住著 Everybody、Somebody、Anybody、Nobody 四個人。某日有重要的事須完成——修補漏雨的屋頂，關乎全島安危，雨勢漸大，再拖便危險。Everybody 以為 Somebody 會做，Somebody 以為 Anybody 會做，Anybody 以為 Everybody 會做，結果 Nobody 什麼也沒做。
-事過多日，屋頂塌了一角，眾人互相指責，誰也不肯認錯，重要的事依舊擱置。`,
-    en: `Four people lived on an island: Everybody, Somebody, Anybody, and Nobody. One day an important task had to be done — repair the leaking roof, on which everyone's safety depended. Everybody thought Somebody would do it. Somebody thought Anybody would. Anybody thought Everybody would. In the end, Nobody did it.
-
-Days passed. A corner of the roof collapsed. Everyone blamed someone else. No one admitted fault. The work stayed undone.`
+    zh: `從前在一個島上住著四個人，他們的名字分別是「每個人」、「某個人」、「其他人」和「沒有人」。
+有一天，有一件很重要的工作需要「每個人」去做。「每個人」以為「某個人」一定會去做，雖然「每個人」自己做得到，最後卻是「沒有人」去做這件事。
+「某個人」後來很生氣，因為那原本是「每個人」的工作，但「每個人」卻以為「其他人」會做，而「沒有人」知道「每個人」都沒有去做。
+結局是：「每個人」都在責怪「某個人」。`,
+    en: `Four people once lived on an island: Everybody, Somebody, Anybody, and Nobody.
+One day an important job needed doing. Everybody assumed Somebody would surely do it — and though Everybody could easily have done it, in the end it was Nobody who did it.
+Somebody grew angry, since it had really been Everybody's job — but Everybody had assumed Anybody would handle it, and Nobody knew that Everybody hadn't.
+In the end, Everybody blamed Somebody.`
   },
 
   prompts: {

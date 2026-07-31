@@ -20,7 +20,7 @@ function formatTime(ts, language) {
 // The textarea is the ONE element in this whole app allowed to scroll. "No
 // scrolling" is a constraint about authored content being cut off, not about
 // interacting with the user's own in-progress writing.
-export default function InsightPanel({ story, contentLanguage, onClose }) {
+export default function InsightPanel({ story, contentLanguage, fontSizePx = 17, onClose }) {
   const { getInsight, setInsight } = useInsights();
   useVisualViewport();
 
@@ -58,6 +58,8 @@ export default function InsightPanel({ story, contentLanguage, onClose }) {
   // updates Done / title / placeholder together with the prompts.
   const zh = contentLanguage === "zh";
 
+  const typeStyle = { "--insight-font-size": `${fontSizePx}px` };
+
   return (
     <div
       className={styles.panel}
@@ -65,6 +67,7 @@ export default function InsightPanel({ story, contentLanguage, onClose }) {
       role="dialog"
       aria-modal="true"
       aria-label={zh ? "我的心得" : "My Insights"}
+      style={typeStyle}
     >
       <div className={styles.header}>
         <h2 className={styles.title}>{zh ? "我的心得" : "My Insights"}</h2>

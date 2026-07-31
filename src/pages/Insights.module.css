@@ -13,7 +13,15 @@
   gap: var(--space-2);
 }
 
+.item {
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-2);
+}
+
 .row {
+  flex: 1;
+  min-width: 0;
   display: flex;
   align-items: center;
   gap: var(--space-3);
@@ -33,6 +41,13 @@
 .row:focus-visible {
   outline: 2.5px solid var(--color-focus);
   outline-offset: 2px;
+}
+
+.deleteBtn {
+  flex-shrink: 0;
+  align-self: center;
+  min-width: 2.35rem;
+  min-height: 2.35rem;
 }
 
 .thumb {

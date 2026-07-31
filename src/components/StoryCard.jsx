@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { useSettings } from "../context/SettingsContext";
 import useLocalStorage from "../hooks/useLocalStorage";
 import { lsgiKey } from "../utils/storage";
+import { DEFAULT_FONT_STEP, FONT_STEPS } from "../utils/readingFont";
 import StoryCardFront from "./StoryCardFront";
 import StoryCardBack from "./StoryCardBack";
 import InsightPanel from "./InsightPanel";
@@ -22,6 +23,8 @@ export default function StoryCard({ story, initialInsightOpen = false }) {
   // language only the first time it's ever read.
   const [contentLanguage, setContentLanguage] = useLocalStorage(lsgiKey("contentLanguage"), language);
   const [face, setFace] = useState("front");
+  // Lifted so the insight panel can match the card-back reading size.
+  const [fontStep, setFontStep] = useState(DEFAULT_FONT_STEP);
 
   const sceneRef = useRef(null);
   const frontHeadingRef = useRef(null);
@@ -92,6 +95,8 @@ export default function StoryCard({ story, initialInsightOpen = false }) {
   }, [insightOpen]);
 
   const toggleContentLanguage = () => setContentLanguage((l) => (l === "zh" ? "en" : "zh"));
+  const cycleFontSize = () => setFontStep((i) => (i + 1) % FONT_STEPS.length);
+  const readingFontPx = (FONT_STEPS[fontStep] || FONT_STEPS[DEFAULT_FONT_STEP]).px;
 
   const img = story.image;
   const tint = theme === "dark" ? img.colorDark : theme === "sepia" ? img.colorSepia : img.colorLight;
@@ -131,6 +136,8 @@ export default function StoryCard({ story, initialInsightOpen = false }) {
               onFlip={flip}
               onHome={handleHome}
               onCatalog={handleCatalog}
+              fontStep={fontStep}
+              onCycleFontSize={cycleFontSize}
               titleId={backTitleId}
               headingRef={backHeadingRef}
             />
@@ -141,6 +148,7 @@ export default function StoryCard({ story, initialInsightOpen = false }) {
           <InsightPanel
             story={story}
             contentLanguage={contentLanguage}
+            fontSizePx={readingFontPx}
             onClose={() => setInsightOpen(false)}
           />
         )}

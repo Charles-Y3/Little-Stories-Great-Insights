@@ -67,7 +67,7 @@
   font-weight: 400;
   color: var(--color-ink);
   line-height: 1.5;
-  font-size: var(--step-0);
+  font-size: var(--insight-font-size, var(--step-0));
 }
 
 .prompt::before {
@@ -84,7 +84,7 @@
   border-radius: var(--radius-sm);
   background: var(--color-surface-alt);
   padding: var(--space-3);
-  font-size: var(--step-0);
+  font-size: var(--insight-font-size, var(--step-0));
   line-height: 1.6;
   overflow-y: auto;
 }

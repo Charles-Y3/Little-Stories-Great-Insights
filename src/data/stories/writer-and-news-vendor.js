@@ -5,11 +5,10 @@ export default {
   tags: { zh: ["情緒", "自主"], en: ["mood", "agency"] },
 
   story: {
-    zh: `有位作家每晚向報販買報，報販態度粗魯，常把報紙扔在櫃上，從不多說一句，有時還當面譏諷。作家總是道謝離去，從不還嘴，也不因此改變自己的步調。朋友不解：「他對你這麼無禮，你何必客氣？」
-作家答：「生氣與禮貌，都是我自己的選擇。為什麼要讓別人決定我該用哪一種？」朋友聞言，默然良久，從此也試著在通勤路上保持自己的節奏。`,
-    en: `Every evening a writer bought a paper from the same vendor — who was always rude, tossing the paper on the counter, sometimes mocking him outright. The writer thanked him and walked away, never answering back, never letting it change his pace.
-
-"Why be polite when he's so nasty?" a friend asked. "Anger and courtesy are both my choices," the writer said. "Why let him decide which one I use?" The friend said nothing for a long moment — and afterward tried to keep his own rhythm on the commute home.`
+    zh: `有一位名作家和朋友到報攤買報紙，朋友很有禮貌地向報販說了聲「謝謝」，報販卻板著臉，一言不發。走遠後，作家問：「他的態度很差，是不是？」朋友說：「他每天晚上都是這樣。」作家又問：「那你為什麼還是對他那麼客氣？」
+朋友回答：「我為什麼要讓他決定我的行為？」`,
+    en: `A well-known writer went to the newsstand with a friend. The friend greeted the vendor politely — "Thank you" — but the vendor just scowled and said nothing. Walking on, the writer asked, "His manner is pretty poor, isn't it?" "He's like that every night," the friend said. "Then why are you still so polite to him?" the writer asked.
+"Why should I let him decide how I behave?" the friend replied.`
   },
 
   prompts: {

@@ -50,12 +50,14 @@
   flex-wrap: wrap;
 }
 
-.langRow {
+.langRow,
+.themeRow {
   display: flex;
   gap: var(--space-2);
 }
 
-.langRow > * {
+.langRow > *,
+.themeRow > * {
   flex: 1 1 0;
   width: 0;
   min-width: 0;
