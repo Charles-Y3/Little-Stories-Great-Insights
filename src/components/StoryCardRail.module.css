@@ -1,24 +1,31 @@
-/* In-flow toolbar row — not absolutely overlaid on the story text. */
+/* Bottom equal-width tab bar — every control gets the same flex share. */
 .rail {
   display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  align-items: stretch;
   flex-shrink: 0;
   gap: var(--space-1);
-  padding: var(--space-3) var(--space-3) var(--space-2);
+  padding: var(--space-2) var(--space-3) var(--space-3);
+  border-top: 1px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-surface) 70%, transparent);
   z-index: 5;
 }
 
 .railBtn {
-  min-width: 2.35rem;
-  min-height: 2.35rem;
-  background: color-mix(in srgb, var(--color-surface) 82%, transparent);
+  flex: 1 1 0;
+  width: 0; /* equal columns: ignore content width, share space evenly */
+  min-width: 0;
+  min-height: 2.6rem;
+  padding: 0.35em 0.1em;
+  font-size: var(--step--1);
+  aspect-ratio: auto;
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
   backdrop-filter: blur(3px);
   box-shadow: var(--shadow-sm);
+  color: var(--color-ink);
 }
 
-.railBtn:nth-child(2) {
-  min-width: 2.75rem;
-  font-variant: all-small-caps;
-  letter-spacing: 0.02em;
+.railBtn svg {
+  display: block;
+  flex-shrink: 0;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import { useSearchParams } from "react-router-dom";
 import { useSettings } from "../context/SettingsContext";
 import stories from "../data/stories";
+import { CATEGORIES, storyMatchesCategory } from "../data/categories";
 import AppShell from "../components/AppShell";
 import HeaderHomeLink from "../components/HeaderHomeLink";
 import StoryTile from "../components/StoryTile";
@@ -11,12 +12,28 @@ import styles from "./Stories.module.css";
 
 export default function Stories() {
   const { language } = useSettings();
-  const title = language === "zh" ? "故事目錄" : "Story catalog";
+  const title = language === "zh" ? "目錄" : "Catalog";
   useDocumentTitle(title);
   const [params, setParams] = useSearchParams();
   const q = params.get("q") || "";
+  const category = params.get("cat") || "all";
 
-  const results = searchStories(q, language, stories).map((hit) => hit.story);
+  const searched = searchStories(q, language, stories).map((hit) => hit.story);
+  const results = searched.filter((story) => storyMatchesCategory(story.id, category));
+
+  const setCategory = (id) => {
+    const next = new URLSearchParams(params);
+    if (!id || id === "all") next.delete("cat");
+    else next.set("cat", id);
+    setParams(next, { replace: true });
+  };
+
+  const setQuery = (value) => {
+    const next = new URLSearchParams(params);
+    if (value) next.set("q", value);
+    else next.delete("q");
+    setParams(next, { replace: true });
+  };
 
   return (
     <AppShell
@@ -40,13 +57,28 @@ export default function Stories() {
           type="search"
           className={styles.search}
           value={q}
-          onChange={(e) => {
-            const next = e.target.value;
-            setParams(next ? { q: next } : {}, { replace: true });
-          }}
+          onChange={(e) => setQuery(e.target.value)}
           placeholder={language === "zh" ? "搜尋故事…" : "Search stories…"}
           aria-label={language === "zh" ? "搜尋故事" : "Search stories"}
         />
+      </div>
+
+      <div className={styles.categories} role="tablist" aria-label={language === "zh" ? "分類" : "Categories"}>
+        {CATEGORIES.map((cat) => {
+          const active = category === cat.id;
+          return (
+            <button
+              key={cat.id}
+              type="button"
+              role="tab"
+              aria-selected={active}
+              className={active ? `${styles.catBtn} ${styles.catBtnActive}` : styles.catBtn}
+              onClick={() => setCategory(cat.id)}
+            >
+              {cat.label[language] || cat.label.en}
+            </button>
+          );
+        })}
       </div>
 
       <p className={styles.count}>

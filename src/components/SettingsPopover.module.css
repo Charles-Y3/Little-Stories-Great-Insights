@@ -9,9 +9,23 @@
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
   padding: var(--space-4);
+  padding-top: calc(var(--space-4) + 0.35rem);
   display: flex;
   flex-direction: column;
   gap: var(--space-4);
+}
+
+.closeBtn {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  min-width: 2.1rem;
+  min-height: 2.1rem;
+  z-index: 1;
+}
+
+.panel > .section:first-of-type .heading {
+  padding-right: 2.25rem;
 }
 
 .section {
@@ -34,6 +48,17 @@
   display: flex;
   gap: var(--space-2);
   flex-wrap: wrap;
+}
+
+.langRow {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.langRow > * {
+  flex: 1 1 0;
+  width: 0;
+  min-width: 0;
 }
 
 .hint {

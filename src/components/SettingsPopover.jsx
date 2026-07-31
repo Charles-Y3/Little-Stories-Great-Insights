@@ -87,9 +87,20 @@ export default function SettingsPopover({ open, onClose }) {
         aria-modal="true"
         aria-label={language === "zh" ? "設定" : "Settings"}
       >
+        <Button
+          variant="ghost"
+          icon
+          className={styles.closeBtn}
+          onClick={onClose}
+          aria-label={language === "zh" ? "關閉" : "Close"}
+          title={language === "zh" ? "關閉" : "Close"}
+        >
+          ✕
+        </Button>
+
         <section className={styles.section}>
           <h3 className={styles.heading}>{language === "zh" ? "語言" : "Language"}</h3>
-          <div className={styles.row}>
+          <div className={styles.langRow}>
             <Button size="sm" variant={language === "zh" ? "primary" : "ghost"} onClick={() => setLanguage("zh")}>
               中文
             </Button>
@@ -159,10 +170,6 @@ export default function SettingsPopover({ open, onClose }) {
           />
           {importError && <p className={styles.error}>{importError}</p>}
         </section>
-
-        <Button size="sm" variant="ghost" block onClick={onClose}>
-          {language === "zh" ? "關閉" : "Close"}
-        </Button>
       </div>
 
       <ConfirmDialog

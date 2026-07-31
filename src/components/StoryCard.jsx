@@ -70,6 +70,16 @@ export default function StoryCard({ story, initialInsightOpen = false }) {
     window.setTimeout(() => document.getElementById(tileId)?.focus(), 0);
   };
 
+  const handleHome = () => {
+    navigate("/");
+  };
+
+  const handleCatalog = () => {
+    const tileId = `tile-${story.id}`;
+    navigate("/stories");
+    window.setTimeout(() => document.getElementById(tileId)?.focus(), 0);
+  };
+
   useEffect(() => {
     const onKey = (e) => {
       // InsightPanel owns Escape while it's open (closes just the panel);
@@ -119,7 +129,8 @@ export default function StoryCard({ story, initialInsightOpen = false }) {
               onOpenInsight={() => setInsightOpen(true)}
               insightDisabled={false}
               onFlip={flip}
-              onExit={handleExit}
+              onHome={handleHome}
+              onCatalog={handleCatalog}
               titleId={backTitleId}
               headingRef={backHeadingRef}
             />

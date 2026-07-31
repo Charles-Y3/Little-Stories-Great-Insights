@@ -10,11 +10,27 @@ import fotudeng from "./fotudeng.js";
 import ourLadysAnswer from "./our-ladys-answer.js";
 import theBambooRepays from "./the-bamboo-repays.js";
 import whyTheBuddhaDidNotSpeak from "./why-the-buddha-did-not-speak.js";
+import zenMasterAndDaoist from "./zen-master-and-daoist.js";
+import theSower from "./the-sower.js";
+import theThiefWithin from "./the-thief-within.js";
+import theApple from "./the-apple.js";
+import writerAndNewsVendor from "./writer-and-news-vendor.js";
+import angerDangerAngel from "./anger-danger-angel.js";
+import fourPeopleOnAnIsland from "./four-people-on-an-island.js";
+import theBumblebee from "./the-bumblebee.js";
+import locomotiveAndCarriages from "./locomotive-and-carriages.js";
+import twoWheelDriveOrFour from "./two-wheel-drive-or-four.js";
+import companyAtTheStart from "./company-at-the-start.js";
+import warshipsFacingInward from "./warships-facing-inward.js";
+import aBowlOfNoodles from "./a-bowl-of-noodles.js";
+import respectForElders from "./respect-for-elders.js";
+import findingTrueWealth from "./finding-true-wealth.js";
+import jesusAndTheDoorkeeper from "./jesus-and-the-doorkeeper.js";
+import affectionOrDesire from "./affection-or-desire.js";
+import listening from "./listening.js";
+import abilityAndAchievement from "./ability-and-achievement.js";
 
-// Ten explicit imports is right at this scale — greppable, and reading order
-// is authored via `order`, not inferred from the filesystem. At ~40+ stories,
-// switch to `import.meta.glob("./stories/*.js", { eager: true })`; that's
-// safe specifically because `order` never depended on file discovery order.
+// Explicit imports stay greppable; reading order is authored via `order`.
 const raw = [
   angelOfTheFlowers,
   watchYourStep,
@@ -25,7 +41,26 @@ const raw = [
   fotudeng,
   ourLadysAnswer,
   theBambooRepays,
-  whyTheBuddhaDidNotSpeak
+  whyTheBuddhaDidNotSpeak,
+  zenMasterAndDaoist,
+  theSower,
+  theThiefWithin,
+  theApple,
+  writerAndNewsVendor,
+  angerDangerAngel,
+  fourPeopleOnAnIsland,
+  theBumblebee,
+  locomotiveAndCarriages,
+  twoWheelDriveOrFour,
+  companyAtTheStart,
+  warshipsFacingInward,
+  aBowlOfNoodles,
+  respectForElders,
+  findingTrueWealth,
+  jesusAndTheDoorkeeper,
+  affectionOrDesire,
+  listening,
+  abilityAndAchievement
 ];
 
 // Story files stay 100% human-authored prose — nobody hand-types a base64

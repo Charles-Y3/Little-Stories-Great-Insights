@@ -1,16 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
 import StoryCardRail from "./StoryCardRail";
 import useTapAway from "../hooks/useTapAway";
+import useReadAloud from "../hooks/useReadAloud";
 import styles from "./StoryCardBack.module.css";
 
 // Discrete reading sizes on the card back. Enlarging past what fits turns on
 // the pane's vertical scrollbar (see overflow sync below) — intentional, so
 // readers can choose comfort over the default no-scroll fit.
 const FONT_STEPS = [
-  { px: 15, label: "A−" },
-  { px: 16, label: "A" },
-  { px: 18, label: "A+" },
-  { px: 20, label: "A++" }
+  { px: 16, label: "A−" },
+  { px: 17, label: "A" },
+  { px: 19, label: "A+" },
+  { px: 21, label: "A++" }
 ];
 const DEFAULT_STEP = 1;
 
@@ -26,7 +27,8 @@ export default function StoryCardBack({
   onOpenInsight,
   insightDisabled,
   onFlip,
-  onExit,
+  onHome,
+  onCatalog,
   titleId,
   headingRef
 }) {
@@ -35,7 +37,16 @@ export default function StoryCardBack({
   const tapAway = useTapAway(onFlip);
   const [fontStep, setFontStep] = useState(DEFAULT_STEP);
 
+  const storyText = String(story.story[contentLanguage] || "");
+  const { speaking, toggle: toggleReadAloud, supported: speechSupported, stop: stopSpeech } =
+    useReadAloud(storyText, contentLanguage);
+
   const cycleFontSize = () => setFontStep((i) => (i + 1) % FONT_STEPS.length);
+
+  const handleBack = () => {
+    stopSpeech();
+    onCatalog();
+  };
 
   // When the chosen size overflows the pane, allow scroll and stop treating
   // taps inside the pane as a flip (scroll gestures must not flip the card).
@@ -63,7 +74,7 @@ export default function StoryCardBack({
   }, [story.id, contentLanguage, fontStep]);
 
   const lang = contentLanguage === "zh" ? "zh-Hant" : "en";
-  const paragraphs = String(story.story[contentLanguage])
+  const paragraphs = storyText
     .split(/\n+/)
     .map((p) => p.trim())
     .filter(Boolean);
@@ -71,17 +82,6 @@ export default function StoryCardBack({
 
   return (
     <div className={styles.content} {...tapAway}>
-      <StoryCardRail
-        uiLanguage={uiLanguage}
-        contentLanguage={contentLanguage}
-        onToggleContentLanguage={onToggleContentLanguage}
-        onOpenInsight={onOpenInsight}
-        insightDisabled={insightDisabled}
-        onCycleFontSize={cycleFontSize}
-        fontSizeLabel={font.label}
-        onExit={onExit}
-      />
-
       <h2 id={titleId} ref={headingRef} tabIndex={-1} className={styles.srTitle} lang={lang}>
         {story.title[contentLanguage]}
       </h2>
@@ -104,6 +104,21 @@ export default function StoryCardBack({
           {story.source[contentLanguage]}
         </p>
       )}
+
+      <StoryCardRail
+        uiLanguage={uiLanguage}
+        contentLanguage={contentLanguage}
+        onHome={onHome}
+        onOpenInsight={onOpenInsight}
+        insightDisabled={insightDisabled}
+        onCycleFontSize={cycleFontSize}
+        fontSizeLabel={font.label}
+        onToggleContentLanguage={onToggleContentLanguage}
+        onReadAloud={toggleReadAloud}
+        speaking={speaking}
+        speechSupported={speechSupported}
+        onBack={handleBack}
+      />
     </div>
   );
 }

@@ -39,7 +39,7 @@
 .storyPane {
   flex: 1;
   min-height: 0;
-  margin: 0 var(--space-4) var(--space-3);
+  margin: var(--space-4) var(--space-4) var(--space-3);
   overflow: hidden;
 }
 
@@ -73,7 +73,7 @@
 }
 
 .source {
-  margin: 0 var(--space-4) var(--space-4);
+  margin: 0 var(--space-4) var(--space-2);
   font-size: var(--step--1);
   color: var(--color-ink-faint);
   text-align: right;

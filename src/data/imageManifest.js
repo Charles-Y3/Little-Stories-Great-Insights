@@ -2,6 +2,42 @@
 // Re-run `npm run images` after changing assets-src/ or scripts/story-slugs.json,
 // then commit this file together with public/story-images/.
 const IMAGES = {
+  "a-bowl-of-noodles": {
+    full: "/story-images/a-bowl-of-noodles-1200.webp",
+    thumb: "/story-images/a-bowl-of-noodles-600.webp",
+    lqip: "data:image/webp;base64,UklGRggBAABXRUJQVlA4IPwAAADQBgCdASoUACQAPu1qrFCppaQiqqgBMB2JZAC1G5H7m0KQLbA+MOh0if8eLQxUwnexHmOW1oMgweGKoYB03gAA/uNFFJLErdNE4Qa0pXH0L02PNQBYDpKHdlhpOfv3gYNwcweOB+McBhuAAC8MrgE3nOzjCQQ47l+FGp0Xq7cr36oFhA2W0ZxOeXNhz2md4Fl4COBXqx5uSqNVJog+XiLWStZI6DfP7V5tkBFbIoq+RzzwlsOFEa3UbUdycdMYYglp2MnG+ED6GdBIMgcHQhCBmSTTu1qZrLZz2CWp1tEQv+giqwNF1UTL+shMmjMDGHdZg5ubdyYAgwPwAAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#dfdbd8",
+    colorDark: "#322d29",
+    colorSepia: "#beb7b1",
+    colorAccent: "#504842"
+  },
+  "ability-and-achievement": {
+    full: "/story-images/ability-and-achievement-1200.webp",
+    thumb: "/story-images/ability-and-achievement-600.webp",
+    lqip: "data:image/webp;base64,UklGRgIBAABXRUJQVlA4IPYAAADwBQCdASoUACQAPu1qrVCppaQiqqgBMB2JQBb5zADCtEPROV70jv8xEnM0TM2DYraEu6fFT+EawAD+cHnyZgUggWJIf6ucGal3pUEZBpENapOgM3BrcVmqcYW9HjEQKf2EzkvbWLHoYvh1LtxBY5JkcvOLu4zYksjMeVTaGYW4ymQ4sJOcZhkX68PXBqJh7vhCWPjpXtCpg4FdRfHJNKd+FjHhJ2ogUvDeQ3hNggEIst+qmZ8/P15xPaZSwzA1FpcEV24wsaUCYE8sqtPvbDXHyQOxOMEOiSd77zvTXvf+c2V6Byy+alCxGiyF6bMchbKKFsAAAAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e0dfd7",
+    colorDark: "#343228",
+    colorSepia: "#c0beaf",
+    colorAccent: "#696652"
+  },
+  "affection-or-desire": {
+    full: "/story-images/affection-or-desire-1200.webp",
+    thumb: "/story-images/affection-or-desire-600.webp",
+    lqip: "data:image/webp;base64,UklGRugAAABXRUJQVlA4INwAAADwBQCdASoUACQAPu1mqFAppSOiqrgN+TAdiUAYBQQK3PBNsuOcyAyDAh7/MjcByrakakLVycIGQAD+FRIb8FICq321aOuif4OyN1YKC1KQsU8Xj/f9Tfez9ElzvRii58H9ILp/f3ABon52K15TOEAKONBcslHgHBDdMi201aKsH0eLVRSevnVRvIX9sSWPD/K3d9SScgpPmO8/Rq4kHNivRgr00FWvnWLxAdOPDRrb9ymC4JspiBHd1uKCIQ4DAsFZTZSgfACALqlA0qCjdgNvLjX91M7s2RVh4AAA",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#dfd9d7",
+    colorDark: "#332b29",
+    colorSepia: "#bfb3b0",
+    colorAccent: "#796661"
+  },
   "angel-of-the-flowers": {
     full: "/story-images/angel-of-the-flowers-1200.webp",
     thumb: "/story-images/angel-of-the-flowers-600.webp",
@@ -14,6 +50,18 @@ const IMAGES = {
     colorSepia: "#c0bdaf",
     colorAccent: "#746f5b"
   },
+  "anger-danger-angel": {
+    full: "/story-images/anger-danger-angel-1200.webp",
+    thumb: "/story-images/anger-danger-angel-600.webp",
+    lqip: "data:image/webp;base64,UklGRu4AAABXRUJQVlA4IOIAAACwBgCdASoUACQAPu1srVCppiQiqqgBMB2JYgCsMxHBcChVsD7oS95UWrGyTICLgKFN2+Vvkw0Ctz86JvrHAAD5/Gg/2NsZJfhkDaMXcAU8E3YDgeItwwY0auP0aorPgTPFvYrWvUO1xBDqvmkYvYEsMQJowaYT4//dWmAbzcJEm0et84ejZcxS871U4XBrj8c/fjYbuGdqWxtzWZA8MEpjM0sEqd4SncFPtb3BRBPUkn4xAQ2NU3ZOg+dW2S2ArQR6w7pSlrtq7npOk+CPvHF2bM1b/6AeaCoRYL3xloPiAAAA",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e1ded5",
+    colorDark: "#353126",
+    colorSepia: "#c3bcac",
+    colorAccent: "#bab29f"
+  },
   "bu-shang-umbrella": {
     full: "/story-images/bu-shang-umbrella-1200.webp",
     thumb: "/story-images/bu-shang-umbrella-600.webp",
@@ -25,6 +73,30 @@ const IMAGES = {
     colorDark: "#2e312b",
     colorSepia: "#b8bdb2",
     colorAccent: "#aeb3a7"
+  },
+  "company-at-the-start": {
+    full: "/story-images/company-at-the-start-1200.webp",
+    thumb: "/story-images/company-at-the-start-600.webp",
+    lqip: "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAAAQBwCdASoUACQAPu1wrlGppqQiqrgIATAdiUAVhll4yqROMoZO/D5THtEWPH5gfB5LTq6YVjomUWmq18hX0ZycwAD6b0V5+jEFJBJJ+xdpHr3KeCXOiCOU8O2yxvuxj8UKelwsooXuNu4hUWXvYYVGE0bwI8lb0LxBA11hQTC9qX7vWvr1A3O6IoFk9sxyyQxxpWdykdzgfY5pH/1eIo526728Xewq1DttfYs0AAz0dR8h44O0xjpnsgW9avf4OQOYsniECOm7nMShI1MN1QDHfsvgsYSw1GOriiZDieRlAi0v5pQVXjgUz0tqfjpl3w7BrkngfAAAAA==",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e8ddcf",
+    colorDark: "#3e301e",
+    colorSepia: "#d4bfa6",
+    colorAccent: "#dac0a0"
+  },
+  "finding-true-wealth": {
+    full: "/story-images/finding-true-wealth-1200.webp",
+    thumb: "/story-images/finding-true-wealth-600.webp",
+    lqip: "data:image/webp;base64,UklGRvIAAABXRUJQVlA4IOYAAAAwBgCdASoUACQAPu1yqFEppyOiqrgKATAdiUAW/XrAb7/TbqqjTZjtyB9bunakSdVtoFIst7dF0DkAAP7njowBWibchXqGlB/+rdbDwuX/GRw9MMtKVmZ/FqzFAJxIp+BjWUeoZCXxYUJ4gwL1Z3YP6E9+2RGFGDxyB+jjdI1A6pp0kFCGSxXoDk0Lea2mgUycEnIS4Y+cCY89VO9fB6YuqBPa+tGS4evqJeFmcItOGxi9F0l+eUlcHDAgqiHJ3Vb4rObFvpNFd5KWCBOqPDajB4I5yC8d3zgCu5ZdkiC4WWQwJyMAAA==",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e8dfcf",
+    colorDark: "#3e331e",
+    colorSepia: "#d1bf9f",
+    colorAccent: "#cdb891"
   },
   "fire-in-the-tower": {
     full: "/story-images/fire-in-the-tower-1200.webp",
@@ -50,6 +122,18 @@ const IMAGES = {
     colorSepia: "#bcbeb1",
     colorAccent: "#626554"
   },
+  "four-people-on-an-island": {
+    full: "/story-images/four-people-on-an-island-1200.webp",
+    thumb: "/story-images/four-people-on-an-island-600.webp",
+    lqip: "data:image/webp;base64,UklGRggBAABXRUJQVlA4IPwAAADwBgCdASoUACQAPu1sqFAppiOiqqoBMB2JYgCnRvJOWxfW+0WXXre3AQWn7DhjVTsPxHPW13CDqHweHDVOiEEAAPJ3kmMRhCUfydNTnGBO+8TJynwpF0I+WaVtEpGQ5wb3GuzLyDlwrCJr1AMjvcni6CPke6q8EyXDQGvIfQljBo6NAkY5mOuKIJhjAlVB+aAgEq2NKNf4oV47/zzeLEm1foAysAgnST5oiZnENIS8oQwQABO3WNQs0/hxMtiSkK372WkcIJJgKMgV70Q8PueqCs3HsP3+nk4q+7hYmjYnVdwQz6KuE1zbIqQx/PJ7D/8A2jR/vc+xOLAAAAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e4dcd2",
+    colorDark: "#3a2f22",
+    colorSepia: "#cab9a6",
+    colorAccent: "#c7b5a1"
+  },
   "hungry-ghosts-and-gods": {
     full: "/story-images/hungry-ghosts-and-gods-1200.webp",
     thumb: "/story-images/hungry-ghosts-and-gods-600.webp",
@@ -61,6 +145,42 @@ const IMAGES = {
     colorDark: "#353027",
     colorSepia: "#c3bbac",
     colorAccent: "#afa491"
+  },
+  "jesus-and-the-doorkeeper": {
+    full: "/story-images/jesus-and-the-doorkeeper-1200.webp",
+    thumb: "/story-images/jesus-and-the-doorkeeper-600.webp",
+    lqip: "data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAADwBgCdASoUACQAPu1urVIppiQiqrgIATAdiWIAsR/af4gn4a27mWwqMZvJj3+ocrh3Sn50uawUSG8k0Csl7bjAAPtqXBP1E3t5TGAizlIfbDDY6ruEKqsn+k3Cgx1zqvRN0nXYFFknnbneQcRSrSP5++iiWq8gDgVR5Ea3fm3I6NBWRHbgnDPZQ9hHIsbLkjPPsFPCqOhUTZtdDHzpRfVlz4s2TeNimbzHy6fYAWUbojqdmc4eJPRlGUw7RAJFC7mqRbvoaccvibcn5iSSzOZ5YVkj2N0KAAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e3dad4",
+    colorDark: "#372c25",
+    colorSepia: "#c6b4a9",
+    colorAccent: "#a08270"
+  },
+  "listening": {
+    full: "/story-images/listening-1200.webp",
+    thumb: "/story-images/listening-600.webp",
+    lqip: "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAACQBgCdASoUACQAPu1orFCppaQiqqgBMB2JYgCqYbFBF5AtqsJbHXSqqWMk00LlNyHtp4B6iyyTexcKth7gAP6dwLYGIilmUDrcaGmaCKuo5JJcoH+Y8m2d+3rbOmUyhgZe1qmtc+hwrLPBLXiw8Jp+4Yu2L9WOgxNf5ELLYmchfuQBFqPQiZOtEGUXBOI5mzHj20o7x4jBPR1MMc/ORX0RMF+8d8oIEO30+KQWYd43ZFZv73plOGSna1ZWledtiYXj+L9HsgAhVDwjWhFLFyOvAHol+8o2g3VqAiKdTOFxnjMELgaUXTLDGixGPXEzAnrSUxx7GEgAAA==",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#deddd8",
+    colorDark: "#32302a",
+    colorSepia: "#bdbcb2",
+    colorAccent: "#4f4d43"
+  },
+  "locomotive-and-carriages": {
+    full: "/story-images/locomotive-and-carriages-1200.webp",
+    thumb: "/story-images/locomotive-and-carriages-600.webp",
+    lqip: "data:image/webp;base64,UklGRrQAAABXRUJQVlA4IKgAAABQBgCdASoUACQAPu1ip02ppaOiKq35MB2JZQC1G8fBURkSXv8Hd9LUXb0+iE8YKqU83TIxK34nzz2i4AD+qCfpj8Tw+XmihxC2qCQdRdlXWvo0IboyI2EKFQ3ekLXrm+0qxdPGZ/gjYudst92KdoY+8HWHjZkBbiHQXB6yT5nRrxUjIKU00XAkTagBP5N2XazcLaUveRThFDSFZKGpPt3ya7Gnj7lVIAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e0ded6",
+    colorDark: "#343228",
+    colorSepia: "#c1bdae",
+    colorAccent: "#534f3f"
   },
   "our-ladys-answer": {
     full: "/story-images/our-ladys-answer-1200.webp",
@@ -74,6 +194,30 @@ const IMAGES = {
     colorSepia: "#cdb6a2",
     colorAccent: "#ba9a7e"
   },
+  "respect-for-elders": {
+    full: "/story-images/respect-for-elders-1200.webp",
+    thumb: "/story-images/respect-for-elders-600.webp",
+    lqip: "data:image/webp;base64,UklGRiYBAABXRUJQVlA4IBoBAACQBwCdASoUACQAPu1mqFAppSOiqqoBMB2JQBTo8CDRq2IPAMUXxlo7HeNGpzuyZRbjHoDyDt44m2UHNj4B9jFjxp5kdGwA/qmvOdH5Vm/H7zAAEpoVcBXmc/rNqt/Jv+6stJHIO53kizFH2bRqdMMEC2rrrl1CoKsbBxU35W3pW+FMxqQw82i73kZyBSMeLjQSY07KJLNmv0Z7nq1sKf0twacTzKy8aZTwujHZq/ltegdwlk+dVkc2eHYoe2ghEcrETpz0nGlDMYyQbdEvXFTJOGOG3tzcEO39BAd5j0ti5Gvs8vXP/ORCGlMcNNsZTBoBSSNMYckqysCB4bo6kMtHeSmWgvOb6zzrDNqE/LwOf51rIexEynzxwAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e0dbd7",
+    colorDark: "#342e28",
+    colorSepia: "#c1b8ae",
+    colorAccent: "#8c7c6c"
+  },
+  "the-apple": {
+    full: "/story-images/the-apple-1200.webp",
+    thumb: "/story-images/the-apple-600.webp",
+    lqip: "data:image/webp;base64,UklGRuQAAABXRUJQVlA4INgAAABwBgCdASoUACQAPu1oq1CppaOiqqgBMB2JYwC2GbWAvo3//zlaEKGfr9bAKKBHjEpXovzS34k5jhtudAAA+Fk83LEo10uI11NFBjKDXZgciawEpxuUvYtv+03tGHHNWkawIdj3AKX/B7P3cVcWzwVRYYQO4br2AlJ26TJumPK+gWBFhm1Uj4Ga1GqlXEiqqab/ys/Pi3BS6CH2UIF4yx6y9SUvE99Gjbs/Af/kDZnFDv1v1y+uMGn6prvYuQy/QUzNYzpmt2PpDhcR8B48wa1RR6BcWYhoAAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e3dad4",
+    colorDark: "#372c24",
+    colorSepia: "#c6b4a9",
+    colorAccent: "#957662"
+  },
   "the-bamboo-repays": {
     full: "/story-images/the-bamboo-repays-1200.webp",
     thumb: "/story-images/the-bamboo-repays-600.webp",
@@ -85,6 +229,66 @@ const IMAGES = {
     colorDark: "#3e341e",
     colorSepia: "#d1c29f",
     colorAccent: "#d1c29f"
+  },
+  "the-bumblebee": {
+    full: "/story-images/the-bumblebee-1200.webp",
+    thumb: "/story-images/the-bumblebee-600.webp",
+    lqip: "data:image/webp;base64,UklGRgIBAABXRUJQVlA4IPYAAADwBgCdASoUACQAPu1urlCppqQiqqgBMB2JYgCdM2PIht/AzhyBMYoEOUgcekpfIzqjpDvUk3qy3Dvg+Mu9DqEAAOk1q1qgPVe8ZfmUPhkMf1OWi18T2QKCixVixS22mUKHCSG2zI/yVlaGEduYl9ABNTqohZ/ZDHhj1/4J5NH+Y9Oslwe+jv9Xp8KmONpgLb6LVCikjCMjlfX4Fy0j3sTWiJk6IzqVjt8TEaRISDzLn1MBcmqowui0hxR4sKiDnEEcGwvSSBE/avGgDr0edLqWI2uDszJxyf9M84EQYM/FiB+gvPuVkht8rre4+NdhNIY0iXUUIAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e8e0cf",
+    colorDark: "#3e341e",
+    colorSepia: "#d4c6a6",
+    colorAccent: "#d6c7a4"
+  },
+  "the-sower": {
+    full: "/story-images/the-sower-1200.webp",
+    thumb: "/story-images/the-sower-600.webp",
+    lqip: "data:image/webp;base64,UklGRtIAAABXRUJQVlA4IMYAAADwBQCdASoUACQAPu1urVCppqQiqqgBMB2JQBWGaYhKeSzRVM1HkKi2MRUOqGMXHn3hoQccv7AaAAD9/RR9kviA0kqQ5H3Xgmz82srKvJcgP8Ph1yneAmIp7Bi0qQT+4tVmxZ3fDJyFMEeHCK8R6I7p36guyHN7Wj2SA1U+i69lEBW3uzxWaqbWdphnhYjeejpYFPwRADNldl/6X4xVIjHk1CWcyHluerRk1m5X/SDL7EJbSVrZt+IoSo6p3ABmYAoB0bnMYAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e8dfcf",
+    colorDark: "#3e331e",
+    colorSepia: "#d1bf9f",
+    colorAccent: "#d3bb8f"
+  },
+  "the-thief-within": {
+    full: "/story-images/the-thief-within-1200.webp",
+    thumb: "/story-images/the-thief-within-600.webp",
+    lqip: "data:image/webp;base64,UklGRvQAAABXRUJQVlA4IOgAAADQBgCdASoUACQAPu1qrFCppaQiqqgBMB2JQBYjgwlc1mgNI3bBKB2drCLR5kUogTiP9U+0XimAI7Z8boBZn/AA4faKmCgGx59Sb20iYcUXvpmPwY+zPUkB4FOO5gmRQfVLQFChi9fp/aXwUj07kZYrB6y9pWAijkePyA7WxTRwSwFGZOGjznM8xBXPlHfR2yMN7shv/NcrujUF+0AKa1vLEp5U76Q2sl+lubTJ4y95ZNnr30xd2dMosYRrSpvf8cG9sv1GhiyVsRwpEpsst+9FkdJC/16V86iPGNAq5XJe7Kz3NMddxgAA",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e2dcd4",
+    colorDark: "#372f25",
+    colorSepia: "#c6b9a9",
+    colorAccent: "#7b6952"
+  },
+  "two-wheel-drive-or-four": {
+    full: "/story-images/two-wheel-drive-or-four-1200.webp",
+    thumb: "/story-images/two-wheel-drive-or-four-600.webp",
+    lqip: "data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAACwBgCdASoUACQAPu1op08ppiMiKqwBMB2JYwC2+3KOZZC8/avrh7vGD98hppCvTQj7K5x0YFYKstc1hnLzhgD+n7Nx2vBJPQzYlZGrnsbHpVh2Gt+T+Od7Hy2RqZeObSD6PFBDX6rkFSQu8X4Z4qGipdOn8F5SwXbmTMOPHPB4ZyPJFrI3SMY/qgw9yt9W0EawnZsy5GMfDpuSL2K5jefD2EDMlGc98qmjZvnLXliMtl/3kVE2PeMU5qQLbX+UlPt6gEzsM3UhwV4yRQ/hIVZMYycahgAA",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#deddd9",
+    colorDark: "#31302b",
+    colorSepia: "#bdbab3",
+    colorAccent: "#5b584f"
+  },
+  "warships-facing-inward": {
+    full: "/story-images/warships-facing-inward-1200.webp",
+    thumb: "/story-images/warships-facing-inward-600.webp",
+    lqip: "data:image/webp;base64,UklGRgYBAABXRUJQVlA4IPoAAACwBgCdASoUACQAPu1wrVGppqQiqrgIATAdiUATpnC40CvZbpRfkh90Ek/iKBOCTe//0QQK+CUZjI9HF26ugADlNTy3hsJ/sAUt+YTWB8COZQ7xER+Biv5a9/EkaeXkZDkwdnjJqfSPOqfiO32CwV3gGOh+FnGVbztRdDkFASxctbJD1xIn81ZMEFiuJ3Cd9rrM1dA1voNfI+v89GCjLewcD9SFbarFnt3AP2T3wB6siZHbO6A4eIdsBW4XNWlOk2PsJHi3aj2+RQNpbbf84XEOuOIiv6ve5s1sZRndxZMFjnGUCAet1NC/uE4geSRWHtFysQEtRj2N90AA",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e3e0d4",
+    colorDark: "#373424",
+    colorSepia: "#c6c1a9",
+    colorAccent: "#c4bea5"
   },
   "watch-your-step": {
     full: "/story-images/watch-your-step-1200.webp",
@@ -121,6 +325,30 @@ const IMAGES = {
     colorDark: "#3e331e",
     colorSepia: "#d0bf9f",
     colorAccent: "#c6b18a"
+  },
+  "writer-and-news-vendor": {
+    full: "/story-images/writer-and-news-vendor-1200.webp",
+    thumb: "/story-images/writer-and-news-vendor-600.webp",
+    lqip: "data:image/webp;base64,UklGRh4BAABXRUJQVlA4IBIBAABQBwCdASoUACQAPu1wr1GppqQiqrgIATAdiWIArw8wOX7I3chvNoqkLitCzOHje4K6xLdXT7bFH9FcztOWG9trbCLAAP5y+89WRuM8fA45TkDxder8hM3DG6DN9nxasm1636Hi1CGIX7KrAe6gOOoqMX4rjfa9aamz2jV9VNrEf4v1SOLGExijW47Kfl4yvri6iu5h+RIhIjMmGCTWhAsUjG4YWUBPcHyVwXN2spJ9Yhhs9GBbHHNudqAddXnn95tPUPonECCIDsqgge+omLTUiy2quLtZhv1GYoQwwKsZre46akqyFrB+C1aCSDHExAMlaaZBskcJzIu7/7xAgDmYPOjp7KZ3g7v8maRmhSoBWoAA",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#dedbd9",
+    colorDark: "#312e2b",
+    colorSepia: "#bdb8b3",
+    colorAccent: "#6b645d"
+  },
+  "zen-master-and-daoist": {
+    full: "/story-images/zen-master-and-daoist-1200.webp",
+    thumb: "/story-images/zen-master-and-daoist-600.webp",
+    lqip: "data:image/webp;base64,UklGRuIAAABXRUJQVlA4INYAAACQBQCdASoUACQAPu1urVCppqQiqqgBMB2JYwCvDApFtZo9c1xrj0d394fN/XTncc5QguI0pAD9NIYtjguzX6ENUSEB7HmFF0ntf8KoMVR8zeBQFB4i+cgawkDIbFWNZ2Vwp3Cv9hqClmKFcE0dQpH3hrzlqzLygJjj363RRMsO4u+CcX6VAR7iNE7Y5ySXUAlSDVKAMKlcke/JJcky7t9RzCY+v6gv7iy4c8CasITbCqKpzrsLP8jOeGJya68TPWijUg4bX1kFYcCRokWOsVKhkd3K8AAA",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#deded8",
+    colorDark: "#32312a",
+    colorSepia: "#bebcb2",
+    colorAccent: "#7a7867"
   },
 };
 
