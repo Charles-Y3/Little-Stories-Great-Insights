@@ -5,26 +5,37 @@
   flex-direction: column;
 }
 
-.title {
-  margin: var(--space-6) var(--space-4) var(--space-2);
-  padding-right: calc(4 * 2.5rem);
+/* Keeps aria-labelledby + focus-on-flip; title is shown on the front face. */
+.srTitle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.srTitle:focus-visible {
+  position: static;
+  width: auto;
+  height: auto;
+  margin: 0 var(--space-4) var(--space-2);
+  clip: auto;
+  white-space: normal;
+  outline: 2.5px solid var(--color-focus);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
   font-size: var(--step-2);
   line-height: 1.3;
   color: var(--color-ink);
 }
 
-.title:focus-visible {
-  outline: 2.5px solid var(--color-focus);
-  outline-offset: 4px;
-  border-radius: var(--radius-sm);
-}
-
-/* The one element genuinely allowed to scroll: "no scrolling" is a
-   constraint about authored content being cut off, not about interaction
-   inside it. In the (validator-should-prevent-this) escape hatch case where
-   a story still overflows at the smallest fit step, useFitText sets
-   data-overflow + data-no-flip here — scroll takes over, and taps inside
-   stop being read as a flip. */
+/* Scrolls when the reader enlarges the type (or a story still overflows at
+   the default size). data-overflow / data-no-flip are synced from JS so a
+   scroll gesture is never misread as "flip the card". */
 .storyPane {
   flex: 1;
   min-height: 0;
@@ -38,7 +49,7 @@
 }
 
 .storyText {
-  font-size: clamp(15px, calc(1rem * var(--fit-scale, 1)), 18px);
+  font-size: var(--story-font-size, 16px);
   line-height: 1.65;
   color: var(--color-ink);
 }
@@ -66,4 +77,5 @@
   font-size: var(--step--1);
   color: var(--color-ink-faint);
   text-align: right;
+  flex-shrink: 0;
 }

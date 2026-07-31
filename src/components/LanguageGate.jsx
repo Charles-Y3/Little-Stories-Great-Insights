@@ -14,7 +14,11 @@ export default function LanguageGate() {
         <h1 id="lang-gate-title" className={styles.title}>
           Little Stories
         </h1>
-        <p className={styles.subtitle}>小故事大啟發</p>
+        <p className={styles.subtitle}>
+          Great Insights
+          <br />
+          小故事大啟發
+        </p>
         <p className={styles.prompt}>
           Choose your reading language
           <br />
@@ -28,7 +32,11 @@ export default function LanguageGate() {
             English
           </Button>
         </div>
-        <p className={styles.hint}>You can change this later in Settings · 之後可在設定中更改</p>
+        <p className={styles.hint}>
+          You can change this later in Settings
+          <br />
+          之後可在設定中更改
+        </p>
       </div>
     </div>
   );

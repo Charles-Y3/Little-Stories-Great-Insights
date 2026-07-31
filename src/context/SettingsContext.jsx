@@ -4,11 +4,10 @@ import { lsgiKey } from "../utils/storage";
 
 const SettingsContext = createContext(null);
 
-// No font-size stepper in v1 (deliberately — see docs/AUTHORING.md and the
-// plan's "font scaling" tension). A global scale up to 1.5x would push a
-// validated 16-line story past what the card's fixed height can hold at any
-// bounded size. The card instead gets its own bounded auto-fit (useFitText),
-// scoped to the card only, via --fit-scale in tokens.css.
+// No *global* font-size stepper (deliberately — see docs/AUTHORING.md). A
+// settings-wide scale would push validated stories past the card height.
+// Per-card reading size lives on the story-card back rail instead, and
+// enlarging there opts into a vertical scrollbar on that pane only.
 export const THEMES = ["light", "dark", "sepia"];
 
 function getDefaultSettings() {

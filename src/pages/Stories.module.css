@@ -1,3 +1,33 @@
+.headerBar {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr 2.75rem;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.headerTitle {
+  margin: 0;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: var(--step-1);
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--color-ink);
+}
+
+.headerBalance {
+  width: 2.75rem;
+  height: 1px;
+}
+
+.lede {
+  margin: 0 0 var(--space-4);
+  max-width: 36rem;
+  font-size: var(--step-0);
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+}
+
 .searchRow {
   margin-bottom: var(--space-3);
 }

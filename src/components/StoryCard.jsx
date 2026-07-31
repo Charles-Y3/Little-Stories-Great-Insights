@@ -125,7 +125,6 @@ export default function StoryCard({ story, initialInsightOpen = false }) {
       {insightOpen && (
         <InsightPanel
           story={story}
-          uiLanguage={language}
           contentLanguage={contentLanguage}
           onClose={() => setInsightOpen(false)}
         />

@@ -11,14 +11,30 @@ import styles from "./Stories.module.css";
 
 export default function Stories() {
   const { language } = useSettings();
-  useDocumentTitle(language === "zh" ? "故事" : "Stories");
+  const title = language === "zh" ? "故事目錄" : "Story catalog";
+  useDocumentTitle(title);
   const [params, setParams] = useSearchParams();
   const q = params.get("q") || "";
 
   const results = searchStories(q, language, stories).map((hit) => hit.story);
 
   return (
-    <AppShell header={<HeaderHomeLink language={language} />}>
+    <AppShell
+      header={
+        <div className={styles.headerBar}>
+          <HeaderHomeLink language={language} />
+          <h1 className={styles.headerTitle}>{title}</h1>
+          {/* Balances the logo so the title stays optically centered. */}
+          <span className={styles.headerBalance} aria-hidden="true" />
+        </div>
+      }
+    >
+      <p className={styles.lede}>
+        {language === "zh"
+          ? "挑選一則小故事，翻開卡片細讀，再寫下你的心得。"
+          : "Pick a short story, flip the card to read, then write what it stirs in you."}
+      </p>
+
       <div className={styles.searchRow}>
         <input
           type="search"

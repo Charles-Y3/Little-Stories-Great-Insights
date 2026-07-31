@@ -1,11 +1,12 @@
+/* In-flow toolbar row — not absolutely overlaid on the story text. */
 .rail {
-  position: absolute;
-  top: var(--space-3);
-  right: var(--space-3);
-  z-index: 5;
   display: flex;
   align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
   gap: var(--space-1);
+  padding: var(--space-3) var(--space-3) var(--space-2);
+  z-index: 5;
 }
 
 .railBtn {
@@ -14,4 +15,10 @@
   background: color-mix(in srgb, var(--color-surface) 82%, transparent);
   backdrop-filter: blur(3px);
   box-shadow: var(--shadow-sm);
+}
+
+.railBtn:nth-child(2) {
+  min-width: 2.75rem;
+  font-variant: all-small-caps;
+  letter-spacing: 0.02em;
 }

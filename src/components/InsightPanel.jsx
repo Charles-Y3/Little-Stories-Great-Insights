@@ -4,8 +4,11 @@ import useVisualViewport from "../hooks/useVisualViewport";
 import Button from "./Button";
 import styles from "./InsightPanel.module.css";
 
-function formatTime(ts) {
-  return new Date(ts).toLocaleTimeString(undefined, { hour: "2-digit", minute: "2-digit" });
+function formatTime(ts, language) {
+  return new Date(ts).toLocaleTimeString(language === "zh" ? "zh-Hant" : "en", {
+    hour: "2-digit",
+    minute: "2-digit"
+  });
 }
 
 // A third face, not a split of the back — a split would either force the
@@ -17,13 +20,12 @@ function formatTime(ts) {
 // The textarea is the ONE element in this whole app allowed to scroll. "No
 // scrolling" is a constraint about authored content being cut off, not about
 // interacting with the user's own in-progress writing.
-export default function InsightPanel({ story, uiLanguage, contentLanguage, onClose }) {
+export default function InsightPanel({ story, contentLanguage, onClose }) {
   const { getInsight, setInsight } = useInsights();
   useVisualViewport();
 
   const existing = getInsight(story.id);
   const [text, setText] = useState(existing?.text || "");
-  const [promptIndex, setPromptIndex] = useState(existing?.promptIndex || 0);
   const [savedAt, setSavedAt] = useState(existing?.updatedAt || null);
   const textareaRef = useRef(null);
 
@@ -40,22 +42,18 @@ export default function InsightPanel({ story, uiLanguage, contentLanguage, onClo
   }, [onClose]);
 
   const prompts = story.prompts?.[contentLanguage] || [];
-  const prompt = prompts.length ? prompts[promptIndex % prompts.length] : "";
 
   const handleChange = (e) => {
     const value = e.target.value;
     setText(value);
-    setInsight(story.id, value, contentLanguage, promptIndex);
+    setInsight(story.id, value, contentLanguage, 0);
     setSavedAt(Date.now());
   };
 
-  const cyclePrompt = () => {
-    const next = (promptIndex + 1) % prompts.length;
-    setPromptIndex(next);
-    if (text.trim()) setInsight(story.id, text, contentLanguage, next);
-  };
-
   const lang = contentLanguage === "zh" ? "zh-Hant" : "en";
+  // Panel chrome follows the reading language so switching 中/EN on the card
+  // updates Done / title / placeholder together with the prompts.
+  const zh = contentLanguage === "zh";
 
   return (
     <div
@@ -63,33 +61,23 @@ export default function InsightPanel({ story, uiLanguage, contentLanguage, onClo
       data-no-flip
       role="dialog"
       aria-modal="true"
-      aria-label={uiLanguage === "zh" ? "我的心得" : "My insight"}
+      aria-label={zh ? "我的心得" : "My Insights"}
     >
       <div className={styles.header}>
-        <h2 className={styles.title}>{uiLanguage === "zh" ? "我的心得" : "My Insight"}</h2>
+        <h2 className={styles.title}>{zh ? "我的心得" : "My Insights"}</h2>
         <Button variant="primary" size="sm" onClick={onClose}>
-          {uiLanguage === "zh" ? "完成" : "Done"}
+          {zh ? "完成" : "Done"}
         </Button>
       </div>
 
-      {prompt && (
-        <div className={styles.promptRow}>
-          <p className={styles.prompt} lang={lang}>
-            {prompt}
-          </p>
-          {prompts.length > 1 && (
-            <Button
-              variant="ghost"
-              icon
-              size="sm"
-              onClick={cyclePrompt}
-              aria-label={uiLanguage === "zh" ? "換一個提示" : "Another prompt"}
-              title={uiLanguage === "zh" ? "換一個提示" : "Another prompt"}
-            >
-              ↻
-            </Button>
-          )}
-        </div>
+      {prompts.length > 0 && (
+        <ul className={styles.prompts} lang={lang}>
+          {prompts.map((prompt, i) => (
+            <li key={i} className={styles.prompt}>
+              {prompt}
+            </li>
+          ))}
+        </ul>
       )}
 
       <textarea
@@ -98,14 +86,14 @@ export default function InsightPanel({ story, uiLanguage, contentLanguage, onClo
         value={text}
         onChange={handleChange}
         lang={lang}
-        placeholder={uiLanguage === "zh" ? "寫下你的心得…" : "Write what this stirred in you…"}
+        placeholder={zh ? "寫下你的心得…" : "Write what this stirred in you…"}
       />
 
       <p className={styles.saved}>
         {savedAt
-          ? uiLanguage === "zh"
-            ? `已儲存 · ${formatTime(savedAt)}`
-            : `Saved · ${formatTime(savedAt)}`
+          ? zh
+            ? `已儲存 · ${formatTime(savedAt, "zh")}`
+            : `Saved · ${formatTime(savedAt, "en")}`
           : " "}
       </p>
     </div>

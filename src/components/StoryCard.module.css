@@ -9,17 +9,25 @@
   padding-top: max(var(--space-4), env(safe-area-inset-top));
   padding-bottom: max(var(--space-4), env(safe-area-inset-bottom));
   background: var(--color-bg-grad);
+  overflow: hidden;
 }
 
 .scene:focus-visible {
   outline: none;
 }
 
+/* Size from both axes: a definite height + aspect-ratio can compute a width
+   wider than the padded scene on tall phones, clipping the right edge while
+   the left padding still shows. Prefer width capped by the height-derived
+   size; max-height + height:auto lets aspect-ratio shrink when the scene is
+   shorter than 92dvh. */
 .card {
   position: relative;
   aspect-ratio: 768 / 1376;
-  height: min(100%, 92dvh);
+  width: min(100%, calc(92dvh * 768 / 1376));
+  height: auto;
   max-width: 100%;
+  max-height: min(100%, 92dvh);
   transform-style: preserve-3d;
   transition: transform var(--card-flip-duration) var(--ease);
 }
