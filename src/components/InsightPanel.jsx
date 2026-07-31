@@ -29,8 +29,11 @@ export default function InsightPanel({ story, contentLanguage, onClose }) {
   const [savedAt, setSavedAt] = useState(existing?.updatedAt || null);
   const textareaRef = useRef(null);
 
+  // Focus after the enter animation so the panel paints at full card size
+  // before the mobile keyboard (and --kb-inset) compresses the inner layout.
   useEffect(() => {
-    textareaRef.current?.focus();
+    const id = window.setTimeout(() => textareaRef.current?.focus(), 280);
+    return () => window.clearTimeout(id);
   }, []);
 
   useEffect(() => {

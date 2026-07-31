@@ -95,40 +95,45 @@ export default function StoryCard({ story, initialInsightOpen = false }) {
       ref={sceneRef}
       tabIndex={-1}
     >
-      <div className={styles.card} data-face={face} style={{ "--story-tint": tint }}>
-        <div className={`${styles.face} ${styles.front}`} ref={frontFaceRef}>
-          <StoryCardFront
-            story={story}
-            uiLanguage={language}
-            onFlip={flip}
-            onExit={handleExit}
-            titleId={frontTitleId}
-            headingRef={frontHeadingRef}
-          />
+      {/* Shared size box so the insight panel always covers the card exactly —
+          a separate absolute panel was shrinking with the keyboard (vv-height
+          × aspect-ratio) into the tiny floating modal. */}
+      <div className={styles.stage}>
+        <div className={styles.card} data-face={face} style={{ "--story-tint": tint }}>
+          <div className={`${styles.face} ${styles.front}`} ref={frontFaceRef}>
+            <StoryCardFront
+              story={story}
+              uiLanguage={language}
+              onFlip={flip}
+              onExit={handleExit}
+              titleId={frontTitleId}
+              headingRef={frontHeadingRef}
+            />
+          </div>
+          <div className={`${styles.face} ${styles.back}`} ref={backFaceRef}>
+            <StoryCardBack
+              story={story}
+              uiLanguage={language}
+              contentLanguage={contentLanguage}
+              onToggleContentLanguage={toggleContentLanguage}
+              onOpenInsight={() => setInsightOpen(true)}
+              insightDisabled={false}
+              onFlip={flip}
+              onExit={handleExit}
+              titleId={backTitleId}
+              headingRef={backHeadingRef}
+            />
+          </div>
         </div>
-        <div className={`${styles.face} ${styles.back}`} ref={backFaceRef}>
-          <StoryCardBack
-            story={story}
-            uiLanguage={language}
-            contentLanguage={contentLanguage}
-            onToggleContentLanguage={toggleContentLanguage}
-            onOpenInsight={() => setInsightOpen(true)}
-            insightDisabled={false}
-            onFlip={flip}
-            onExit={handleExit}
-            titleId={backTitleId}
-            headingRef={backHeadingRef}
-          />
-        </div>
-      </div>
 
-      {insightOpen && (
-        <InsightPanel
-          story={story}
-          contentLanguage={contentLanguage}
-          onClose={() => setInsightOpen(false)}
-        />
-      )}
+        {insightOpen && (
+          <InsightPanel
+            story={story}
+            contentLanguage={contentLanguage}
+            onClose={() => setInsightOpen(false)}
+          />
+        )}
+      </div>
 
       <p className={styles.srAnnounce} aria-live="polite">
         {face === "back"
