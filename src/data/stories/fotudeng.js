@@ -1,7 +1,10 @@
+// Display title renamed from 佛圖澄 / Fotudeng → 日日清新 / Made New Each Morning
+// (2026-07-31) so the card leads with the teaching, not only the figure's name.
+// Slug and image key stay `fotudeng`.
 export default {
   id: "fotudeng",
   order: 7,
-  title: { zh: "佛圖澄", en: "Fotudeng" },
+  title: { zh: "日日清新", en: "Made New Each Morning" },
   tags: { zh: ["自省", "更新"], en: ["reflection", "renewal"] },
 
   story: {

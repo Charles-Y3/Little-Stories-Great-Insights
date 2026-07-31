@@ -1,7 +1,9 @@
+// Display title renamed from 聖母的回答 / Our Lady's Answer → 我忘記了 / I've Forgotten
+// (2026-07-31) to lead with the punchline. Slug and image key stay `our-ladys-answer`.
 export default {
   id: "our-ladys-answer",
   order: 8,
-  title: { zh: "聖母的回答", en: "Our Lady's Answer" },
+  title: { zh: "我忘記了", en: "I've Forgotten" },
   source: { zh: "天主教故事", en: "A Catholic parable" },
   tags: { zh: ["寬恕", "恩典"], en: ["forgiveness", "grace"] },
 

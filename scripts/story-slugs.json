@@ -40,13 +40,15 @@
     "file": "fotudeng.png",
     "originalFile": "佛圖澄.png",
     "slug": "fotudeng",
-    "titleZh": "佛圖澄"
+    "titleZh": "日日清新",
+    "note": "Display title renamed 2026-07-31 from 佛圖澄 → 日日清新 (en: Made New Each Morning). Slug unchanged."
   },
   {
     "file": "our-ladys-answer.png",
     "originalFile": "聖母的回答.png",
     "slug": "our-ladys-answer",
-    "titleZh": "聖母的回答"
+    "titleZh": "我忘記了",
+    "note": "Display title renamed 2026-07-31 from 聖母的回答 → 我忘記了 (en: I've Forgotten). Slug unchanged."
   },
   {
     "file": "the-bamboo-repays.png",
