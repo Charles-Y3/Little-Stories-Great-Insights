@@ -90,6 +90,14 @@
   text-align: center;
 }
 
+.thanks {
+  margin: 0 auto var(--space-3);
+  max-width: 28rem;
+  font-size: var(--step--1);
+  line-height: 1.55;
+  color: var(--color-ink-soft);
+}
+
 .disclaimer {
   margin: 0 auto var(--space-3);
   max-width: 28rem;

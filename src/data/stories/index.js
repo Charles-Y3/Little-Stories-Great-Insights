@@ -29,6 +29,17 @@ import jesusAndTheDoorkeeper from "./jesus-and-the-doorkeeper.js";
 import affectionOrDesire from "./affection-or-desire.js";
 import listening from "./listening.js";
 import abilityAndAchievement from "./ability-and-achievement.js";
+import foolishDonkey from "./foolish-donkey.js";
+import whoToCareFor from "./who-to-care-for.js";
+import fireOfIgnorance from "./fire-of-ignorance.js";
+import whoseFault from "./whose-fault.js";
+import whatIsZen from "./what-is-zen.js";
+import sharedFateBird from "./shared-fate-bird.js";
+import willingToFace from "./willing-to-face.js";
+import putYourselfThere from "./put-yourself-there.js";
+import virtueOrKin from "./virtue-or-kin.js";
+import twoZenMasters from "./two-zen-masters.js";
+import richMansHeart from "./rich-mans-heart.js";
 
 // Explicit imports stay greppable; reading order is authored via `order`.
 const raw = [
@@ -60,7 +71,18 @@ const raw = [
   jesusAndTheDoorkeeper,
   affectionOrDesire,
   listening,
-  abilityAndAchievement
+  abilityAndAchievement,
+  foolishDonkey,
+  whoToCareFor,
+  fireOfIgnorance,
+  whoseFault,
+  whatIsZen,
+  sharedFateBird,
+  willingToFace,
+  putYourselfThere,
+  virtueOrKin,
+  twoZenMasters,
+  richMansHeart
 ];
 
 // Story files stay 100% human-authored prose — nobody hand-types a base64

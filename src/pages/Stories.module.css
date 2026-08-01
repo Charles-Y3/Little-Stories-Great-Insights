@@ -46,17 +46,15 @@
   outline-offset: 2px;
 }
 
-/* Equal-width category tabs under the search bar. */
+/* Two rows of three equal-width category tabs under the search bar. */
 .categories {
-  display: flex;
-  align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-1);
   margin: 0 0 var(--space-4);
 }
 
 .catBtn {
-  flex: 1 1 0;
-  width: 0;
   min-width: 0;
   min-height: 2.5rem;
   padding: 0.45em 0.2em;

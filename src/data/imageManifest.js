@@ -110,6 +110,30 @@ const IMAGES = {
     colorSepia: "#c1b2ae",
     colorAccent: "#6d5853"
   },
+  "fire-of-ignorance": {
+    full: "/story-images/fire-of-ignorance-1200.webp",
+    thumb: "/story-images/fire-of-ignorance-600.webp",
+    lqip: "data:image/webp;base64,UklGRhIBAABXRUJQVlA4IAYBAAAwBwCdASoUACQAPu1qrFCppaQiqqgBMB2JQBVR8oDLkhMrroH/43OOYnQxTkEoN5q7wwr7RXDR3hCdYKJKQ5bIcMAAzW99Y8Ssh8Zvkj0ttRmw+2+gJEQXun29vdLWLd9/Ee4WbuE/i9K7ovtib9/5rx7C/eqrsdyMMGb1aQLduysyWfq+L7G5cBR63nJ6+ktEaXwxGt0DSZ3sGkbB7hMfdn1AwCw29NAMn+e45R7UD42KngOXJTQwvUIa5pCYPy0+3Vo7nmgstwcdAQGnbB/Fdc/t/e2FacW7fcy1Nldr+G+r2/wbGaqg6WEKcbljH1ddv7SW7ZpaunjSzOMZ4z8xyKigWFAA",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e7dfd0",
+    colorDark: "#3c331f",
+    colorSepia: "#cebfa1",
+    colorAccent: "#ccbc9d"
+  },
+  "foolish-donkey": {
+    full: "/story-images/foolish-donkey-1200.webp",
+    thumb: "/story-images/foolish-donkey-600.webp",
+    lqip: "data:image/webp;base64,UklGRgQBAABXRUJQVlA4IPgAAABQBgCdASoUACQAPu1srVCppiQiqqgBMB2JQBajXkzgNMCR4S5FgXFX7jxq2uwtygKQfBoEnAGsnE7iAAD3u/wckpX3Xeiu/f7hqQDQu5b/Bhpfo4wBdu1ICo4OWL1kQ+GVCLaYEBArrlZXUCrzgGHDYiJA7eYREUDJYPPFbjNHB7c2306aMoIZ74/7bVh4vnZ9dKP7Eli3+1sYNCNASNQMOpwvUeZ6kKG+Bnx0DGOvcBkELCa8/AkjADx6Yep7ff70vYRCXjNnDISauA+OUZTo7Js9Agj+qsqvmzq3vLVRl8dxWRAbEmaJlRYL+lJf3xtIyw/BnMAAAA==",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e7ddcf",
+    colorDark: "#3d301f",
+    colorSepia: "#d0bca1",
+    colorAccent: "#d0bca1"
+  },
   "fotudeng": {
     full: "/story-images/fotudeng-1200.webp",
     thumb: "/story-images/fotudeng-600.webp",
@@ -194,6 +218,18 @@ const IMAGES = {
     colorSepia: "#cdb6a2",
     colorAccent: "#ba9a7e"
   },
+  "put-yourself-there": {
+    full: "/story-images/put-yourself-there-1200.webp",
+    thumb: "/story-images/put-yourself-there-600.webp",
+    lqip: "data:image/webp;base64,UklGRvwAAABXRUJQVlA4IPAAAACQBgCdASoUACQAPu1srlCppiQiqqgBMB2JZQC7AYyohn69Vky/twe6xW1TQzmPL+btMZ5FajSIvHJrh6gAAP6YGbKQFsPqKxtKzETpwJPAba7F9QKxUwOAKKD+v3TXmpJR7deSSs5LHv5RS2wrWIw0ODGEyLcCoJd8KlxI3CpZFRzPCZPiJ4SfZ2re4bHzpq3P1QxNkomph/5iEeE4Oaln3CF4ONpEJcAZj6X6ILPUzgB7YvMHVESLqt6XCVkYvukoqyueEYTvtxwC3TF1RquiP5FYWYOJ0YWJaNnfPuA7OHbBRFk5OU+yELCR0euYAAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e2dcd5",
+    colorDark: "#362e26",
+    colorSepia: "#c4b8ab",
+    colorAccent: "#726250"
+  },
   "respect-for-elders": {
     full: "/story-images/respect-for-elders-1200.webp",
     thumb: "/story-images/respect-for-elders-600.webp",
@@ -205,6 +241,30 @@ const IMAGES = {
     colorDark: "#342e28",
     colorSepia: "#c1b8ae",
     colorAccent: "#8c7c6c"
+  },
+  "rich-mans-heart": {
+    full: "/story-images/rich-mans-heart-1200.webp",
+    thumb: "/story-images/rich-mans-heart-600.webp",
+    lqip: "data:image/webp;base64,UklGRuwAAABXRUJQVlA4IOAAAABQBgCdASoUACQAPu1yr1GppyQiqrgIATAdiWMAt7gis+b/ssvoOib02Y7Qr8+IYQxwzsAOFSEYC+Z2AAD+zLW1xXdJoDdwNiDq0ehogiRLDM7IViq0me4k0PN+9nAclrDi4JK4NNIeYUC/jzbP8GM0aRmwmnaUOlbeW0r8K40oNfUUkJIm1BaqCAg1pefJTXtbKOX0NmjZTuBK+2g7tRR0zU96Zdb5v0DhmrKHCO0DO5m7vCcEqEtRzM6WLtCOaPSM2eyzgCjAAfkSBwLIWQ+NkIX6zHVH4BrzKTWQRHYAAA==",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e0d9d6",
+    colorDark: "#342a27",
+    colorSepia: "#c2b2ae",
+    colorAccent: "#594843"
+  },
+  "shared-fate-bird": {
+    full: "/story-images/shared-fate-bird-1200.webp",
+    thumb: "/story-images/shared-fate-bird-600.webp",
+    lqip: "data:image/webp;base64,UklGRuoAAABXRUJQVlA4IN4AAABQBgCdASoUACQAPu1srVIppaQiqrgIATAdiWMAtOgez53Zg8vo6b5gu7DcZnOVy6aG586r/prg5BKeAAD064IJaOIx7eYW3gVQhcsaH3Gcw2ORfUJKnd70LqCq+vWLowiY7eUg6N86avgnP8LXOY9v3Rkc2U09wHakERQNg6B9VGJFJ6NzxX8f7necsh9MzCL3aSbjIXN1mrCTy/X2HV1sxYd61w1JfGh9835DQ1p6kb9hb77SJgxirtjT7QVWRPljIAD9LPhBVbLBUurdEyO9uDlhTLSNtStB37XgAAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e6e0d0",
+    colorDark: "#3c3420",
+    colorSepia: "#d0c4a6",
+    colorAccent: "#d0c4a6"
   },
   "the-apple": {
     full: "/story-images/the-apple-1200.webp",
@@ -278,6 +338,30 @@ const IMAGES = {
     colorSepia: "#bdbab3",
     colorAccent: "#5b584f"
   },
+  "two-zen-masters": {
+    full: "/story-images/two-zen-masters-1200.webp",
+    thumb: "/story-images/two-zen-masters-600.webp",
+    lqip: "data:image/webp;base64,UklGRhABAABXRUJQVlA4IAQBAACQBgCdASoUACQAPu1qpk8ppiMiKqwBMB2JQBb9dEHMs05KEH26uU4UvZjfvRln2NiX0RAhqnp5uK75C4wAAP7r42Sj8rW52kqjJ/Z2Ip55lq2RxFy3llWI00ADM//OVlWZk4G/2hIZg/1T4tY72QgxxVXWAF1GbfPKGN8BCjzKWAL5aBiM47GvgSV4vW/QzMFGLL0k5Fmcn+Y61eiPkQ+Nv/fhyNhRMW56BxSbhUJ7Fs8+SlI2PeirnHY+ODRBxLn5knGmyZIjijy/jSaER0OFXZM6zEh8kT8CIlMqJcPL/IB0jLi1KM7zJ9nbTL8GtVNJty/MJfvxsu98yOs+VYAYGwAAAA==",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#d9ddda",
+    colorDark: "#2b302c",
+    colorSepia: "#b4bcb5",
+    colorAccent: "#4b544d"
+  },
+  "virtue-or-kin": {
+    full: "/story-images/virtue-or-kin-1200.webp",
+    thumb: "/story-images/virtue-or-kin-600.webp",
+    lqip: "data:image/webp;base64,UklGRsoAAABXRUJQVlA4IL4AAABQBgCdASoUACQAPu1wsVKppiSipWmZMB2JYwC2FCM3O1jryHf35eR8ZOT8BbK35VYg7rZ/Djs5d+4ohAD+4wuqZWQelduP6IZ7r4f5dQQjFdLam9KSn2sy0coZ3q+WBb9lQBc/2BmYswsBtgydTbWaU3oRrYtJdwdLzjb6svzdBkKxtf4TEZemPQAGVpTqFGPQay01pgm50spMSdZHvWkjAj2Xx4ZmExyplM5ObBDoqzDASVppfQ7QrsvFN3gA",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e0d9d6",
+    colorDark: "#342b28",
+    colorSepia: "#c1b3ae",
+    colorAccent: "#68554f"
+  },
   "warships-facing-inward": {
     full: "/story-images/warships-facing-inward-1200.webp",
     thumb: "/story-images/warships-facing-inward-600.webp",
@@ -302,6 +386,18 @@ const IMAGES = {
     colorSepia: "#b6bbb4",
     colorAccent: "#565d54"
   },
+  "what-is-zen": {
+    full: "/story-images/what-is-zen-1200.webp",
+    thumb: "/story-images/what-is-zen-600.webp",
+    lqip: "data:image/webp;base64,UklGRvQAAABXRUJQVlA4IOgAAADwBQCdASoUACQAPu1kpk6ppaMiKq35MB2JQBZwO8fSLcn1NuWiFoM45flNG/xQxpst71FSZf7wAAD3foGxfj4slxmNmIKt+CBk/I2X8q82SDD7DppCXipAWCJ1UzlMb5mJ9qHSJexFpol9b6gZCFDusnkaCYVlPt9GUuQLlIl6yFc61cbgByE6FwCENhulZD1MidGAekLKc3XfHU5wQTCUNKx0T5hnC/hcJX4KqS40yX4s+M1C5gGHURrJHyaw7qqB5BXaqQScrv5eogTG1KETbX/RxFnztHIFXJ3T2Rp/x8hR9e2WgAAA",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e4dfd2",
+    colorDark: "#393222",
+    colorSepia: "#c9bea6",
+    colorAccent: "#c0b396"
+  },
   "which-road-to-choose": {
     full: "/story-images/which-road-to-choose-1200.webp",
     thumb: "/story-images/which-road-to-choose-600.webp",
@@ -314,6 +410,30 @@ const IMAGES = {
     colorSepia: "#c1beae",
     colorAccent: "#6b6651"
   },
+  "who-to-care-for": {
+    full: "/story-images/who-to-care-for-1200.webp",
+    thumb: "/story-images/who-to-care-for-600.webp",
+    lqip: "data:image/webp;base64,UklGRvIAAABXRUJQVlA4IOYAAACwBQCdASoUACQAPu1srVCppiQiqqgBMB2JYwC+SBEpEWclo1avKV4QemsUeBSXEukGzxhjgVAA8/OJIAc64mXEIV05yH2OnnOZ6X0BmmEe31UucoGssPXojR2sivqqWdQfFywm6szB4hOUbZimClenC1GdpPoym63RYDwnlik4pbmU0cScxVTzNR2OOcYpgHUhPNyoMeTT1ZOvPEpYAHWsprLive+QZxe4UcvmBDdumVrKUGrVkSFPubD+BVI31RopUeAE/BhYY0uv63waB44LWSr6fRl48K6tf6n9lrVnbZHetAAAAA==",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e2dcd5",
+    colorDark: "#362e26",
+    colorSepia: "#c5b8ab",
+    colorAccent: "#7b6955"
+  },
+  "whose-fault": {
+    full: "/story-images/whose-fault-1200.webp",
+    thumb: "/story-images/whose-fault-600.webp",
+    lqip: "data:image/webp;base64,UklGRg4BAABXRUJQVlA4IAIBAACwBgCdASoUACQAPu1qrVCppaQiqqgBMB2JYwCqYbAxj1uwgebr68avVbp+fVzNweP17qTCeci/igd2cGvLcAD+3yeGHvxGpLFhMZ27io+LBOGwFI0RxRsGzPzvgIOeBVnMSMmRinjSHy3mc3IibbSIMhrcCXHyCGULBcLiV2u5ksFWiSy0fdzZPtZy41OnMJ9LlDkMW0a+Okfh3E2wC66/ba1efq+28LMO11AfuOU/O3UjAMDs/ZvKOrt7N0x4XdWej5AgnBJx+KJNLhKX5+B8UohxZK97VbQPyIHvC9q+cjNGzTzq8Sup1uc2yPNb0OgL/ErxrW77qYNTl9G+AQgAAAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e5ded2",
+    colorDark: "#3a3122",
+    colorSepia: "#d8cebc",
+    colorAccent: "#d8cebc"
+  },
   "why-the-buddha-did-not-speak": {
     full: "/story-images/why-the-buddha-did-not-speak-1200.webp",
     thumb: "/story-images/why-the-buddha-did-not-speak-600.webp",
@@ -325,6 +445,18 @@ const IMAGES = {
     colorDark: "#3e331e",
     colorSepia: "#d0bf9f",
     colorAccent: "#c6b18a"
+  },
+  "willing-to-face": {
+    full: "/story-images/willing-to-face-1200.webp",
+    thumb: "/story-images/willing-to-face-600.webp",
+    lqip: "data:image/webp;base64,UklGRvYAAABXRUJQVlA4IOoAAAAwBgCdASoUACQAPu1qrFCppaQiqqgBMB2JQBSQZcEgJz4KdpoqnrRtBS8DhJEA2BTTV473NEgnaogAAP7t62f0MDzLWRPbs5QCDCVj7mrRYUEwxhM5/GgF6VUZoT8ZQnu62Zw30Yl7yzGnvMcymEvXJaHtsLvUR2YDLR0d6OtLEpne6UsYV9icOj0YyXQkPt7XffKRw6tnpyzEn7jROoPc65MWbgmohrnReUF46SA7jUBaRsG3kM6MAOaK1X/b31V/de4Qnv9hex8QtX08/C4JWUnGOHRdC8Y8VqvibBmk77CpDJVIgouoAAA=",
+    width: 768,
+    height: 1376,
+    aspect: "768 / 1376",
+    colorLight: "#e1dcd6",
+    colorDark: "#352f27",
+    colorSepia: "#c3b9ac",
+    colorAccent: "#bfb4a7"
   },
   "writer-and-news-vendor": {
     full: "/story-images/writer-and-news-vendor-1200.webp",

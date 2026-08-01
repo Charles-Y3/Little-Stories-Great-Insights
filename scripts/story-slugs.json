@@ -175,5 +175,72 @@
     "originalFile": "能力與成就.png",
     "slug": "ability-and-achievement",
     "titleZh": "能力與成就"
+  },
+  {
+    "file": "foolish-donkey.png",
+    "originalFile": "笨驢子.png",
+    "slug": "foolish-donkey",
+    "titleZh": "笨驢子"
+  },
+  {
+    "file": "who-to-care-for.png",
+    "originalFile": "關心誰.png",
+    "slug": "who-to-care-for",
+    "titleZh": "關心誰"
+  },
+  {
+    "file": "fire-of-ignorance.png",
+    "originalFile": "無明火.png",
+    "slug": "fire-of-ignorance",
+    "titleZh": "無明火"
+  },
+  {
+    "file": "whose-fault.png",
+    "originalFile": "錯在誰.png",
+    "slug": "whose-fault",
+    "titleZh": "錯在誰"
+  },
+  {
+    "file": "what-is-zen.png",
+    "originalFile": "何謂禪.png",
+    "slug": "what-is-zen",
+    "titleZh": "何謂禪"
+  },
+  {
+    "file": "shared-fate-bird.png",
+    "originalFile": "共命鳥.png",
+    "slug": "shared-fate-bird",
+    "titleZh": "共命鳥"
+  },
+  {
+    "file": "willing-to-face.png",
+    "originalFile": "願意面對.png",
+    "slug": "willing-to-face",
+    "titleZh": "願意面對"
+  },
+  {
+    "file": "put-yourself-there.png",
+    "originalFile": "設身處地.png",
+    "slug": "put-yourself-there",
+    "titleZh": "設身處地"
+  },
+  {
+    "file": "virtue-or-kin.png",
+    "originalFile": "設身處地2.png",
+    "slug": "virtue-or-kin",
+    "titleZh": "節孝難兩全",
+    "note": "Display title renamed from 設身處地2 → 節孝難兩全 (en: Virtue or Kin)."
+  },
+  {
+    "file": "two-zen-masters.png",
+    "originalFile": "兩位禪師.png",
+    "slug": "two-zen-masters",
+    "titleZh": "兩位禪師"
+  },
+  {
+    "file": "rich-mans-heart.png",
+    "originalFile": "富翁的心.png",
+    "slug": "rich-mans-heart",
+    "titleZh": "富翁的心"
   }
 ]

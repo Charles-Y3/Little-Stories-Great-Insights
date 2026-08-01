@@ -80,6 +80,11 @@ export default function Home() {
         </div>
 
         <footer className={styles.footer}>
+          <p className={styles.thanks}>
+            {language === "zh"
+              ? "致謝：這些小故事來自歷代師長、修行者與信仰傳統口耳相傳、筆錄流傳的智慧。感謝每一位曾講述、抄寫、保存它們的人；若無前人的分享，我們無從在今日翻開這些卡片。"
+              : "Acknowledgments: These little stories come from teachers, practitioners, and faith traditions — wisdom passed on by word of mouth and by hand. Thank you to everyone who told, wrote down, and kept them; without that sharing, we could not open these cards today."}
+          </p>
           <p className={styles.disclaimer}>
             {language === "zh"
               ? "免責聲明：本應用內的故事與心得僅供靈性啟發與個人反思之用，不構成宗教、醫療、法律或其他專業建議。"

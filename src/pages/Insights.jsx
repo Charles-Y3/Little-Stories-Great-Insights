@@ -16,7 +16,8 @@ function formatDate(ts) {
 
 export default function Insights() {
   const { language } = useSettings();
-  useDocumentTitle(language === "zh" ? "我的心得" : "My Insights");
+  const title = language === "zh" ? "我的心得" : "My Insights";
+  useDocumentTitle(title);
   const { insights, removeInsight } = useInsights();
   const [pendingDelete, setPendingDelete] = useState(null);
 
@@ -32,7 +33,16 @@ export default function Insights() {
   };
 
   return (
-    <AppShell header={<HeaderHomeLink language={language} />}>
+    <AppShell
+      header={
+        <div className={styles.headerBar}>
+          <HeaderHomeLink language={language} />
+          <h1 className={styles.headerTitle}>{title}</h1>
+          {/* Balances the logo so the title stays optically centered. */}
+          <span className={styles.headerBalance} aria-hidden="true" />
+        </div>
+      }
+    >
       {rows.length === 0 ? (
         <p className={styles.empty}>
           {language === "zh" ? "你還沒有寫下任何心得。" : "You haven't written any insights yet."}
