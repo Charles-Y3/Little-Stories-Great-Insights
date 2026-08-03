@@ -1,0 +1,24 @@
+---
+description: Sync this app's version into the Small Steps portal on every ship
+alwaysApply: true
+---
+
+# Portal version sync (Small Steps to Great Harmony)
+
+This app is listed on the suite portal
+`small-steps-to-great-harmony` (`src/data/apps.ts`, id **`stories`**).
+
+Whenever you finish a shippable update here and **commit + push** this repo:
+
+1. **Bump** this app's `package.json` `version` if it was not already bumped
+   for this change (patch for fixes/chores, minor for user-visible features).
+   Keep `package-lock.json` in sync when the lockfile tracks the root version.
+2. **Update** the matching `version` field on the `stories` entry in
+   `../small-steps-to-great-harmony/src/data/apps.ts` (or the absolute path
+   `C:/Users/charl/Documents/Projects/small-steps-to-great-harmony/src/data/apps.ts`)
+   so it equals this app's `package.json` version. Do not invent a different number.
+3. **Commit and push** the portal repo as well (message like
+   `chore: bump stories portal version to X.Y.Z`). Do not wait to be asked.
+4. Skip the portal step only when the change is explicitly local-only
+   (e.g. notes/rules that do not ship to users) or the version is already
+   identical after the bump.
