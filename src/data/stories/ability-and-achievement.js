@@ -5,17 +5,17 @@ export default {
   tags: { zh: ["責任", "學習"], en: ["responsibility", "growth"] },
 
   story: {
-    zh: `甲、乙二人同在修辦。
+    zh: `甲、乙二人同在辦事情。
 甲心想：這件事我哪有能力？我只選我能接受、做得到的就好，不要太貪心。
-乙心想：雖然我不免犯錯，但我要再學；不敢自以為是。道務有所成就，我會認真接受一切責任付託。
+乙心想：雖然我不免犯錯，但我要再學；不敢自以為是。事務有所成就，我會認真接受一切責任付託。
 同樣面對事情，一個先量自己的限度，一個先打開學習與承擔——成就，往往跟著後者來。`,
-    en: `Two people serve the same path.
+    en: `A and B are handling the same affairs.
 
 A thinks: "How could I handle that? I'll only take what I can accept and finish — better not be greedy."
 
-B thinks: "I will make mistakes, but I'll keep learning. I won't pretend I know it all. When something succeeds, I'll take the responsibility that comes with it."
+B thinks: "I will make mistakes, but I'll keep learning. I won't pretend I know it all. When the work bears fruit, I'll take every responsibility entrusted to me."
 
-One measures the self first. The other opens to learning and ownership. Achievement tends to follow the second.`
+Faced with the same tasks, one measures the self first; the other opens to learning and ownership. Achievement tends to follow the second.`
   },
 
   prompts: {

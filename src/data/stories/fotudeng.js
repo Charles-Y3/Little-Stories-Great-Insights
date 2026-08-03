@@ -8,10 +8,10 @@ export default {
   tags: { zh: ["自省", "更新"], en: ["reflection", "renewal"] },
 
   story: {
-    zh: `在古時候有一個人叫做佛圖澄，精通於術法，在他的腹旁，有一個小洞，每一天的清晨，固定到一條小溪旁邊，從腹旁的小洞，引出自己的五臟六腑出來洗滌，因此日日清新，爾等當引為一大啟示。`,
+    zh: `在古時候有一個人叫做佛圖澄，精通於術法，在他的腹旁，有一個小洞，每一天的清晨，固定到一條小溪旁邊，從腹旁的小洞，引出自己的五臟六腑出來洗滌，因此日日清新，當引為一大啟示。`,
     en: `Long ago there lived a man named Fotudeng, deeply versed in the arcane arts. Beside his belly he kept a small opening, and each morning, without fail, he would go to a nearby stream, draw his own organs out through it, and wash them clean in the water — emerging each day new and unclouded.
 
-Let this be a great teaching for us: whatever grows heavy and stale within us needs washing too, and there is no reason it cannot be done daily.`
+Let this be a great teaching: whatever grows heavy and stale within us needs washing too, and there is no reason it cannot be done daily.`
   },
 
   prompts: {

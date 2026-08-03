@@ -88,6 +88,12 @@ export default function StoryCardBack({
         </div>
       </div>
 
+      {story.notes?.[contentLanguage] && (
+        <p className={styles.notes} lang={lang}>
+          {story.notes[contentLanguage]}
+        </p>
+      )}
+
       {story.source?.[contentLanguage] && (
         <p className={styles.source} lang={lang}>
           {story.source[contentLanguage]}

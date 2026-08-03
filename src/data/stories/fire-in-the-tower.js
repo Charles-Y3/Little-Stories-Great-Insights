@@ -10,7 +10,7 @@ export default {
 乙對甲說：「難道你忘了嗎？這裡是第十三層樓。」
 甲又說：「你迷信有菩薩會來救你嗎？」
 乙回答說：「你也迷信跳下去會有韋陀捧著你嗎？」
-試問弟妹等，到底誰對誰錯？`,
+試問到底誰對誰錯？`,
     en: `A fire broke out in a tall building. Two people stood trapped on the balcony.
 
 "I can't bear it," said one. "Let's jump."
@@ -19,9 +19,14 @@ export default {
 
 "Do you really believe some bodhisattva will come save you?" the first shot back.
 
-"And do you believe some guardian spirit will catch you if you jump?" the other answered.
+"And do you believe Weituo will catch you if you jump?" the other answered.
 
 So — which of the two was right, and which was wrong?`
+  },
+
+  notes: {
+    zh: "韋陀：佛教護法神。",
+    en: "Weituo: a Buddhist guardian deity."
   },
 
   prompts: {
