@@ -21,18 +21,22 @@ export function buildBackup() {
   };
 }
 
-// Fixed filename (no date stamp) so repeat exports to the same downloads
-// folder are recognizable as "the same file" and easy to manually replace,
-// even though the browser — not this code — decides whether to overwrite,
-// rename, or prompt.
+// Timestamped filename (down to the minute): a plain browser download can't
+// be overwritten in place — the browser silently appends "(1)", "(2)" etc.
+// to repeat downloads of the same name — so an undated fixed name risks the
+// user later importing a stale file with no way to tell it apart from the
+// latest one. The folder auto-save path (folderBackup.js) is the one place
+// a fixed name is safe, because it genuinely overwrites via the File System
+// Access API instead of going through the browser's download manager.
 export function downloadBackup() {
   const backup = buildBackup();
   const json = JSON.stringify(backup, null, 2);
   const blob = new Blob([json], { type: "application/json" });
   const url = URL.createObjectURL(blob);
+  const stamp = new Date().toISOString().replace(/[:T]/g, "-").slice(0, 16);
   const a = document.createElement("a");
   a.href = url;
-  a.download = "little-stories-backup.json";
+  a.download = `little-stories-backup-${stamp}.json`;
   document.body.appendChild(a);
   a.click();
   a.remove();

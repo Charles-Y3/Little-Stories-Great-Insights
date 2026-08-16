@@ -14,7 +14,7 @@ import { isFolderBackupEnabled, saveToFolderNow } from "../utils/folderBackup";
 import { shouldShowBackupReminder, snoozeBackupReminder } from "../utils/backupReminder";
 import styles from "./Home.module.css";
 
-const APP_VERSION = "1.1.0";
+const APP_VERSION = "1.1.1";
 
 export default function Home() {
   const { language } = useSettings();
