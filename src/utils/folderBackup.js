@@ -3,7 +3,7 @@
 // instead of producing a new download each time. Chromium-only; callers must
 // fall back to backup.js's downloadBackup() where this isn't supported.
 import { lsgiKey } from "./storage";
-import { buildBackup } from "./backup";
+import { buildBackup, downloadBackup } from "./backup";
 import { recordBackup } from "./backupReminder";
 
 const DB_NAME = "lsgi-fs";
@@ -128,4 +128,36 @@ export async function saveToFolderNow() {
   const handle = await getVerifiedHandle();
   if (!handle) throw new Error("Folder access is no longer available");
   await writeBackupToFolder(handle);
+}
+
+// The single "what should clicking Export actually do" decision, shared by
+// every Export entry point (Settings button, the write-triggered nudge) so
+// they can't drift apart: reuse an already-granted folder (silent
+// overwrite); if none is granted yet, ask for one now — never default
+// straight to a download when the folder flow is available. Falls back to
+// a timestamped download only when the File System Access API isn't
+// supported, or the folder step genuinely fails (a cancelled picker does
+// nothing, rather than surprising the user with an unrequested download).
+export async function exportSmart() {
+  if (isFolderBackupEnabled()) {
+    try {
+      await saveToFolderNow();
+      return { mode: "folder", folderName: getFolderName() };
+    } catch (err) {
+      downloadBackup();
+      return { mode: "download", error: err };
+    }
+  }
+  if (isFolderBackupSupported()) {
+    try {
+      const name = await enableFolderBackup();
+      return { mode: "folder", folderName: name, justEnabled: true };
+    } catch (err) {
+      if (err?.name === "AbortError") return { mode: "cancelled" };
+      downloadBackup();
+      return { mode: "download", error: err };
+    }
+  }
+  downloadBackup();
+  return { mode: "download" };
 }

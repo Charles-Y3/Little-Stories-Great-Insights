@@ -1,12 +1,11 @@
 import { useCallback, useState } from "react";
-import { autoSaveIfEnabled } from "../utils/folderBackup";
+import { autoSaveIfEnabled, exportSmart } from "../utils/folderBackup";
 import { shouldShowBackupReminder, snoozeBackupReminder } from "../utils/backupReminder";
-import { downloadBackup } from "../utils/backup";
 
 // Call triggerAfterChange() right after an insight write. If it was silently
 // auto-saved to a folder, nothing surfaces. Otherwise — the common case on
 // Firefox/Safari/iOS, where folder auto-save doesn't exist — it shows an
-// export nudge, gated by the same 14-day/snooze rule as the Settings
+// export nudge, gated by the same 7-day/snooze rule as the Settings
 // reminder so writing several insights in a row doesn't spam the user.
 export default function useBackupNudge() {
   const [visible, setVisible] = useState(false);
@@ -18,8 +17,12 @@ export default function useBackupNudge() {
   }, []);
 
   const exportNow = useCallback(() => {
-    downloadBackup();
-    setVisible(false);
+    void exportSmart().then((result) => {
+      // Leave the toast up if the folder picker was cancelled, so the user
+      // can try again or dismiss explicitly, instead of it vanishing with
+      // nothing having actually been backed up.
+      if (result.mode !== "cancelled") setVisible(false);
+    });
   }, []);
 
   const dismiss = useCallback(() => {
