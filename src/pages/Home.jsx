@@ -25,20 +25,25 @@ export default function Home() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const { insights } = useInsights();
   const hasBackupData = insights.some((i) => i.text?.trim());
+  // Consumed once, right on mount, so both banners below agree on whether
+  // this load is the one right after an import — the stale-backup nudge
+  // would otherwise fire alongside the import notice for no reason.
+  const [justImported] = useState(() => consumeJustImportedFlag());
   const [showBackupReminder, setShowBackupReminder] = useState(false);
   useEffect(() => {
+    if (justImported) return;
     setShowBackupReminder(shouldShowBackupReminder(hasBackupData));
-  }, [hasBackupData]);
+  }, [hasBackupData, justImported]);
   // One-time, right after an import: folder auto-save can't be restored
   // from the imported file itself (see backupReminder.js), so if it isn't
   // currently active, tell the user they'll need to re-choose the folder
   // rather than let them silently assume it's still protecting new writes.
   const [showImportFolderNotice, setShowImportFolderNotice] = useState(false);
   useEffect(() => {
-    if (consumeJustImportedFlag() && isFolderBackupSupported() && !isFolderBackupEnabled()) {
+    if (justImported && isFolderBackupSupported() && !isFolderBackupEnabled()) {
       setShowImportFolderNotice(true);
     }
-  }, []);
+  }, [justImported]);
 
   // Delegates to the same exportSmart() decision as the Settings Export
   // button and the write-triggered nudge, so this can't drift into its own
