@@ -2,7 +2,6 @@ import React, { useRef, useState } from "react";
 import { useSettings } from "../context/SettingsContext";
 import AppLogo from "./AppLogo";
 import Button from "./Button";
-import ConfirmDialog from "./ConfirmDialog";
 import { readBackupFile, applyBackup, isValidBackup } from "../utils/backup";
 import { flagJustImported } from "../utils/backupReminder";
 import { isFolderBackupSupported, importFromFolder } from "../utils/folderBackup";
@@ -11,9 +10,19 @@ import styles from "./LanguageGate.module.css";
 export default function LanguageGate() {
   const { chooseLanguage } = useSettings();
   const fileInputRef = useRef(null);
-  const [pendingImport, setPendingImport] = useState(null);
   const [importError, setImportError] = useState("");
   const [importBusy, setImportBusy] = useState(false);
+
+  // Nothing to protect with an "overwrite?" confirm here — this screen only
+  // shows when storage was just wiped or on first launch, so there's no
+  // existing data yet. Apply immediately once the backup is read, rather
+  // than adding a fourth prompt on top of the two the browser already
+  // shows for folder + write-access permission.
+  const applyAndReload = (backup) => {
+    applyBackup(backup);
+    flagJustImported();
+    window.location.reload();
+  };
 
   // When the File System Access API is available, one folder picker does
   // double duty: it reads the backup file out of the chosen folder AND
@@ -33,7 +42,7 @@ export default function LanguageGate() {
         setImportError("That folder's backup file doesn't look valid. / 該資料夾內的備份檔案格式不正確。");
         return;
       }
-      setPendingImport(backup);
+      applyAndReload(backup);
     } catch (err) {
       if (err?.name !== "AbortError") {
         setImportError(
@@ -57,19 +66,10 @@ export default function LanguageGate() {
         setImportError("That doesn't look like a valid backup file. / 備份檔案格式不正確。");
         return;
       }
-      setImportError("");
-      setPendingImport(obj);
+      applyAndReload(obj);
     } catch {
       setImportError("Could not read that file. / 無法讀取備份檔案。");
     }
-  };
-
-  const confirmImport = () => {
-    if (!pendingImport) return;
-    applyBackup(pendingImport);
-    setPendingImport(null);
-    flagJustImported();
-    window.location.reload();
   };
 
   return (
@@ -103,13 +103,13 @@ export default function LanguageGate() {
           之後可在設定中更改
         </p>
         <p className={styles.importHint}>
-          Load your previously saved data instead — restores your insights,
-          language, and settings from a backup file.
+          Load saved data from a folder — select the folder you previously
+          used for auto-save.
           <br />
-          或載入先前儲存的資料——從備份檔還原您的心得、語言與設定。
+          從資料夾載入已儲存的資料——選擇您先前用於自動儲存的資料夾。
         </p>
         <Button variant="ghost" size="sm" onClick={() => void handleImportClick()} disabled={importBusy}>
-          Import backup / 匯入備份
+          Select folder / 選擇資料夾
         </Button>
         <input
           ref={fileInputRef}
@@ -120,16 +120,6 @@ export default function LanguageGate() {
         />
         {importError && <p className={styles.error}>{importError}</p>}
       </div>
-
-      <ConfirmDialog
-        open={Boolean(pendingImport)}
-        title="Overwrite current data? / 覆蓋目前資料？"
-        message="Importing will replace your current insights and settings. This can't be undone. / 匯入備份將取代目前的心得與設定，且無法復原。"
-        confirmLabel="Import / 匯入"
-        cancelLabel="Cancel / 取消"
-        onConfirm={confirmImport}
-        onCancel={() => setPendingImport(null)}
-      />
     </div>
   );
 }
