@@ -59,3 +59,20 @@
   color: var(--color-ink-faint);
   line-height: 1.5;
 }
+
+.importHint {
+  margin: var(--space-3) 0 0;
+  font-size: var(--step--1);
+  color: var(--color-ink-faint);
+  line-height: 1.5;
+}
+
+.error {
+  margin: 0;
+  font-size: var(--step--1);
+  color: var(--color-accent-strong);
+}
+
+.fileInput {
+  display: none;
+}
