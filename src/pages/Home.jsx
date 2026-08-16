@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useSettings } from "../context/SettingsContext";
 import stories from "../data/stories";
@@ -8,14 +8,37 @@ import AppLogo from "../components/AppLogo";
 import Button from "../components/Button";
 import SettingsPopover from "../components/SettingsPopover";
 import useDocumentTitle from "../hooks/useDocumentTitle";
+import useInsights from "../hooks/useInsights";
+import { downloadBackup } from "../utils/backup";
+import { isFolderBackupEnabled, saveToFolderNow } from "../utils/folderBackup";
+import { shouldShowBackupReminder, snoozeBackupReminder } from "../utils/backupReminder";
 import styles from "./Home.module.css";
 
-const APP_VERSION = "1.0.0";
+const APP_VERSION = "1.1.0";
 
 export default function Home() {
   const { language } = useSettings();
   useDocumentTitle(language === "zh" ? "首頁" : "Home");
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const { insights } = useInsights();
+  const hasBackupData = insights.some((i) => i.text?.trim());
+  const [showBackupReminder, setShowBackupReminder] = useState(false);
+  useEffect(() => {
+    setShowBackupReminder(shouldShowBackupReminder(hasBackupData));
+  }, [hasBackupData]);
+
+  const handleBackupNow = async () => {
+    if (isFolderBackupEnabled()) {
+      try {
+        await saveToFolderNow();
+      } catch {
+        downloadBackup();
+      }
+    } else {
+      downloadBackup();
+    }
+    setShowBackupReminder(false);
+  };
 
   // Pick once per visit so the header control stays stable while on Home.
   const randomStoryHref = useMemo(() => {
@@ -50,6 +73,30 @@ export default function Home() {
       }
     >
       <div className={styles.page}>
+        {showBackupReminder && (
+          <div className={styles.backupBanner}>
+            <p className={styles.backupBannerText}>
+              {language === "zh"
+                ? "您已有一段時間沒有備份心得了，資料仍只存在此裝置上。"
+                : "It's been a while since you backed up your insights — they still only live on this device."}
+            </p>
+            <div className={styles.backupBannerActions}>
+              <Button variant="gold" size="sm" onClick={() => void handleBackupNow()}>
+                {language === "zh" ? "立即備份" : "Back up now"}
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => {
+                  snoozeBackupReminder();
+                  setShowBackupReminder(false);
+                }}
+              >
+                {language === "zh" ? "稍後提醒" : "Remind me later"}
+              </Button>
+            </div>
+          </div>
+        )}
         <div className={styles.hero}>
           <AppLogo size={72} />
           <h1 className={styles.title}>

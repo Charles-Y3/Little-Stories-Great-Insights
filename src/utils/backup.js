@@ -4,6 +4,7 @@
 // hand-written reflections with no server copy, so losing localStorage means
 // losing them for good.
 import { lsgiKey, readJSON, writeJSON } from "./storage";
+import { recordBackup } from "./backupReminder";
 
 const BACKUP_KEYS = ["insights", "settings", "contentLanguage"];
 
@@ -20,6 +21,10 @@ export function buildBackup() {
   };
 }
 
+// Fixed filename (no date stamp) so repeat exports to the same downloads
+// folder are recognizable as "the same file" and easy to manually replace,
+// even though the browser — not this code — decides whether to overwrite,
+// rename, or prompt.
 export function downloadBackup() {
   const backup = buildBackup();
   const json = JSON.stringify(backup, null, 2);
@@ -27,11 +32,12 @@ export function downloadBackup() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
-  a.download = `little-stories-backup-${new Date().toISOString().slice(0, 10)}.json`;
+  a.download = "little-stories-backup.json";
   document.body.appendChild(a);
   a.click();
   a.remove();
   URL.revokeObjectURL(url);
+  recordBackup();
 }
 
 export function isValidBackup(obj) {

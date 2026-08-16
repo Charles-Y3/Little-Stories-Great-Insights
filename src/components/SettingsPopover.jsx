@@ -4,6 +4,14 @@ import Button from "./Button";
 import ConfirmDialog from "./ConfirmDialog";
 import { downloadBackup, readBackupFile, applyBackup, isValidBackup } from "../utils/backup";
 import {
+  isFolderBackupSupported,
+  isFolderBackupEnabled,
+  getFolderName,
+  enableFolderBackup,
+  disableFolderBackup,
+  saveToFolderNow
+} from "../utils/folderBackup";
+import {
   subscribePwaInstall,
   getDeferredInstallPrompt,
   promptPwaInstall,
@@ -27,6 +35,10 @@ export default function SettingsPopover({ open, onClose }) {
   const [offlineReady, setOfflineReady] = useState(false);
   const [pendingImport, setPendingImport] = useState(null);
   const [importError, setImportError] = useState("");
+  const [folderEnabled, setFolderEnabled] = useState(() => isFolderBackupEnabled());
+  const [folderName, setFolderName] = useState(() => getFolderName());
+  const [folderBusy, setFolderBusy] = useState(false);
+  const [folderError, setFolderError] = useState("");
 
   useEffect(() => subscribePwaInstall(() => setInstallAvailable(Boolean(getDeferredInstallPrompt()))), []);
   useEffect(() => subscribeOfflineReady(setOfflineReady), []);
@@ -76,6 +88,51 @@ export default function SettingsPopover({ open, onClose }) {
     applyBackup(pendingImport);
     setPendingImport(null);
     window.location.reload();
+  };
+
+  const handleEnableFolderBackup = async () => {
+    setFolderError("");
+    setFolderBusy(true);
+    try {
+      const name = await enableFolderBackup();
+      setFolderName(name);
+      setFolderEnabled(true);
+    } catch (err) {
+      if (err?.name !== "AbortError") {
+        setFolderError(
+          language === "zh" ? "無法存取該資料夾，請再試一次。" : "Couldn’t access that folder — please try again."
+        );
+      }
+    } finally {
+      setFolderBusy(false);
+    }
+  };
+
+  const handleDisableFolderBackup = async () => {
+    await disableFolderBackup();
+    setFolderEnabled(false);
+    setFolderName("");
+  };
+
+  const handleExportClick = async () => {
+    if (!folderEnabled) {
+      downloadBackup();
+      return;
+    }
+    setFolderError("");
+    setFolderBusy(true);
+    try {
+      await saveToFolderNow();
+    } catch {
+      setFolderError(
+        language === "zh"
+          ? "資料夾存取已失效，改為下載檔案。"
+          : "Folder access is no longer available — downloading a file instead."
+      );
+      downloadBackup();
+    } finally {
+      setFolderBusy(false);
+    }
   };
 
   return (
@@ -154,7 +211,7 @@ export default function SettingsPopover({ open, onClose }) {
         <section className={styles.section}>
           <h3 className={styles.heading}>{language === "zh" ? "備份與還原" : "Backup & Restore"}</h3>
           <div className={styles.row}>
-            <Button size="sm" variant="ghost" onClick={() => downloadBackup()}>
+            <Button size="sm" variant="ghost" onClick={() => void handleExportClick()} disabled={folderBusy}>
               {language === "zh" ? "匯出備份" : "Export backup"}
             </Button>
             <Button size="sm" variant="ghost" onClick={handleFilePick}>
@@ -169,6 +226,38 @@ export default function SettingsPopover({ open, onClose }) {
             onChange={handleFileChange}
           />
           {importError && <p className={styles.error}>{importError}</p>}
+
+          {isFolderBackupSupported() && (
+            <>
+              <h3 className={styles.heading} style={{ marginTop: "var(--space-2)" }}>
+                {language === "zh" ? "自動儲存到資料夾" : "Auto-save to folder"}
+              </h3>
+              {folderEnabled ? (
+                <>
+                  <p className={styles.hint}>
+                    {language === "zh"
+                      ? `已啟用 — 儲存到「${folderName}」，每次寫心得或匯出都會覆寫同一個檔案。`
+                      : `Enabled — saving to “${folderName}”. Writing an insight or exporting overwrites the same file.`}
+                  </p>
+                  <Button size="sm" variant="ghost" onClick={() => void handleDisableFolderBackup()}>
+                    {language === "zh" ? "停用" : "Disable"}
+                  </Button>
+                </>
+              ) : (
+                <>
+                  <p className={styles.hint}>
+                    {language === "zh"
+                      ? "選擇一個裝置上的資料夾，之後心得與匯出會自動覆寫儲存到那裡。"
+                      : "Pick a folder on this device — insights and exports will auto-save there, overwriting the same file."}
+                  </p>
+                  <Button size="sm" variant="ghost" onClick={() => void handleEnableFolderBackup()} disabled={folderBusy}>
+                    {language === "zh" ? "選擇資料夾" : "Choose folder"}
+                  </Button>
+                </>
+              )}
+              {folderError && <p className={styles.error}>{folderError}</p>}
+            </>
+          )}
         </section>
       </div>
 

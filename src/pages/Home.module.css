@@ -29,6 +29,34 @@
   flex-direction: column;
 }
 
+.backupBanner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin: var(--space-3) var(--space-3) 0;
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface-alt);
+  border: 1px solid var(--color-gold-strong);
+  border-radius: var(--radius-md);
+}
+
+.backupBannerText {
+  margin: 0;
+  flex: 1;
+  min-width: 12rem;
+  font-size: var(--step--1);
+  color: var(--color-ink);
+  line-height: 1.5;
+}
+
+.backupBannerActions {
+  display: flex;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
 .hero {
   display: flex;
   flex-direction: column;

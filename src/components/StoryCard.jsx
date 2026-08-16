@@ -7,6 +7,8 @@ import { DEFAULT_FONT_STEP, FONT_STEPS } from "../utils/readingFont";
 import StoryCardFront from "./StoryCardFront";
 import StoryCardBack from "./StoryCardBack";
 import InsightPanel from "./InsightPanel";
+import BackupNudge from "./BackupNudge";
+import useBackupNudge from "../hooks/useBackupNudge";
 import styles from "./StoryCard.module.css";
 
 export default function StoryCard({ story, initialInsightOpen = false }) {
@@ -16,6 +18,7 @@ export default function StoryCard({ story, initialInsightOpen = false }) {
   const uid = useId();
 
   const [insightOpen, setInsightOpen] = useState(() => Boolean(initialInsightOpen));
+  const { showNudge, triggerAfterChange, exportNow, dismiss } = useBackupNudge();
 
   // Two independent language axes, same pattern as the sibling project:
   // `language` is the interface language (global, in settings); this is the
@@ -149,10 +152,15 @@ export default function StoryCard({ story, initialInsightOpen = false }) {
             story={story}
             contentLanguage={contentLanguage}
             fontSizePx={readingFontPx}
-            onClose={() => setInsightOpen(false)}
+            onClose={() => {
+              setInsightOpen(false);
+              triggerAfterChange();
+            }}
           />
         )}
       </div>
+
+      <BackupNudge open={showNudge} onExport={exportNow} onDismiss={dismiss} />
 
       <p className={styles.srAnnounce} aria-live="polite">
         {face === "back"
