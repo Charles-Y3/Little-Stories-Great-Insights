@@ -19,6 +19,7 @@ import {
   installGuideKind
 } from "../utils/pwaInstall";
 import { subscribeOfflineReady } from "../utils/offlineReady";
+import { flagJustImported } from "../utils/backupReminder";
 import styles from "./SettingsPopover.module.css";
 
 const THEME_LABELS = {
@@ -85,6 +86,7 @@ export default function SettingsPopover({ open, onClose }) {
     if (!pendingImport) return;
     applyBackup(pendingImport);
     setPendingImport(null);
+    flagJustImported();
     window.location.reload();
   };
 

@@ -9,9 +9,12 @@ import Button from "../components/Button";
 import SettingsPopover from "../components/SettingsPopover";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import useInsights from "../hooks/useInsights";
-import { downloadBackup } from "../utils/backup";
-import { isFolderBackupEnabled, saveToFolderNow } from "../utils/folderBackup";
-import { shouldShowBackupReminder, snoozeBackupReminder } from "../utils/backupReminder";
+import { exportSmart, isFolderBackupSupported, isFolderBackupEnabled, enableFolderBackup } from "../utils/folderBackup";
+import {
+  shouldShowBackupReminder,
+  snoozeBackupReminder,
+  consumeJustImportedFlag
+} from "../utils/backupReminder";
 import styles from "./Home.module.css";
 
 const APP_VERSION = "1.1.1";
@@ -26,18 +29,24 @@ export default function Home() {
   useEffect(() => {
     setShowBackupReminder(shouldShowBackupReminder(hasBackupData));
   }, [hasBackupData]);
-
-  const handleBackupNow = async () => {
-    if (isFolderBackupEnabled()) {
-      try {
-        await saveToFolderNow();
-      } catch {
-        downloadBackup();
-      }
-    } else {
-      downloadBackup();
+  // One-time, right after an import: folder auto-save can't be restored
+  // from the imported file itself (see backupReminder.js), so if it isn't
+  // currently active, tell the user they'll need to re-choose the folder
+  // rather than let them silently assume it's still protecting new writes.
+  const [showImportFolderNotice, setShowImportFolderNotice] = useState(false);
+  useEffect(() => {
+    if (consumeJustImportedFlag() && isFolderBackupSupported() && !isFolderBackupEnabled()) {
+      setShowImportFolderNotice(true);
     }
-    setShowBackupReminder(false);
+  }, []);
+
+  // Delegates to the same exportSmart() decision as the Settings Export
+  // button and the write-triggered nudge, so this can't drift into its own
+  // "just download" behavior again — it was doing exactly that before,
+  // never actually prompting for a folder on first use.
+  const handleBackupNow = async () => {
+    const result = await exportSmart();
+    if (result.mode !== "cancelled") setShowBackupReminder(false);
   };
 
   // Pick once per visit so the header control stays stable while on Home.
@@ -93,6 +102,30 @@ export default function Home() {
                 }}
               >
                 {language === "zh" ? "稍後提醒" : "Remind me later"}
+              </Button>
+            </div>
+          </div>
+        )}
+        {showImportFolderNotice && (
+          <div className={styles.backupBanner}>
+            <p className={styles.backupBannerText}>
+              {language === "zh"
+                ? "已匯入資料。若您先前有開啟「自動儲存到資料夾」，需要重新選擇一次資料夾——匯入無法還原資料夾的存取權限。"
+                : "Data imported. If you had “Auto-save to folder” on before, you'll need to choose the folder again — an import can't restore folder access."}
+            </p>
+            <div className={styles.backupBannerActions}>
+              <Button
+                variant="gold"
+                size="sm"
+                onClick={() => {
+                  void enableFolderBackup().catch(() => {});
+                  setShowImportFolderNotice(false);
+                }}
+              >
+                {language === "zh" ? "選擇資料夾" : "Choose folder"}
+              </Button>
+              <Button variant="ghost" size="sm" onClick={() => setShowImportFolderNotice(false)}>
+                {language === "zh" ? "知道了" : "Got it"}
               </Button>
             </div>
           </div>
