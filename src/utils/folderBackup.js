@@ -87,6 +87,29 @@ export async function enableFolderBackup() {
   return dirHandle.name;
 }
 
+// Lets a user pick their existing auto-save folder to import from — one
+// picker does double duty: it reads little-stories-backup.json out of that
+// folder AND grants the same readwrite handle auto-save uses, so choosing
+// the folder once both restores the data and re-enables auto-save to it.
+// Throws NO_BACKUP_FILE if the chosen folder has no backup file in it (the
+// folder handle/enabled flag are only persisted once a real file is found).
+export async function importFromFolder() {
+  if (!isFolderBackupSupported()) throw new Error("File System Access API not supported");
+  const dirHandle = await window.showDirectoryPicker({ id: "lsgi-backup", mode: "readwrite" });
+  let fileHandle;
+  try {
+    fileHandle = await dirHandle.getFileHandle(BACKUP_FILENAME);
+  } catch {
+    throw new Error("NO_BACKUP_FILE");
+  }
+  const file = await fileHandle.getFile();
+  const backup = JSON.parse(await file.text());
+  await idbSet(HANDLE_KEY, dirHandle);
+  localStorage.setItem(ENABLED_KEY, "1");
+  localStorage.setItem(FOLDER_NAME_KEY, dirHandle.name);
+  return { backup, folderName: dirHandle.name };
+}
+
 export async function disableFolderBackup() {
   await idbDelete(HANDLE_KEY);
   localStorage.removeItem(ENABLED_KEY);

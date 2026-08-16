@@ -9,7 +9,8 @@ import {
   getFolderName,
   enableFolderBackup,
   disableFolderBackup,
-  exportSmart
+  exportSmart,
+  importFromFolder
 } from "../utils/folderBackup";
 import {
   subscribePwaInstall,
@@ -40,6 +41,7 @@ export default function SettingsPopover({ open, onClose }) {
   const [folderName, setFolderName] = useState(() => getFolderName());
   const [folderBusy, setFolderBusy] = useState(false);
   const [folderError, setFolderError] = useState("");
+  const [importBusy, setImportBusy] = useState(false);
 
   useEffect(() => subscribePwaInstall(() => setInstallAvailable(Boolean(getDeferredInstallPrompt()))), []);
   useEffect(() => subscribeOfflineReady(setOfflineReady), []);
@@ -63,7 +65,45 @@ export default function SettingsPopover({ open, onClose }) {
   const standalone = isStandaloneDisplay();
   const guide = installGuideKind();
 
-  const handleFilePick = () => fileInputRef.current?.click();
+  // When the File System Access API is available, one folder picker does
+  // double duty: it reads the backup file out of the chosen folder AND
+  // re-grants auto-save access to that same folder — so restoring data and
+  // (re-)enabling auto-save can be a single action. Falls back to a plain
+  // file picker where unsupported.
+  const handleImportClick = async () => {
+    if (!isFolderBackupSupported()) {
+      fileInputRef.current?.click();
+      return;
+    }
+    setImportError("");
+    setImportBusy(true);
+    try {
+      const { backup, folderName } = await importFromFolder();
+      if (!isValidBackup(backup)) {
+        setImportError(
+          language === "zh" ? "該資料夾內的備份檔案格式不正確。" : "That folder's backup file doesn't look valid."
+        );
+        return;
+      }
+      setFolderEnabled(true);
+      setFolderName(folderName);
+      setPendingImport(backup);
+    } catch (err) {
+      if (err?.name !== "AbortError") {
+        setImportError(
+          err?.message === "NO_BACKUP_FILE"
+            ? language === "zh"
+              ? "該資料夾內找不到備份檔案。"
+              : "No backup file found in that folder."
+            : language === "zh"
+              ? "無法讀取該資料夾。"
+              : "Could not read that folder."
+        );
+      }
+    } finally {
+      setImportBusy(false);
+    }
+  };
 
   const handleFileChange = async (e) => {
     const file = e.target.files?.[0];
@@ -218,7 +258,7 @@ export default function SettingsPopover({ open, onClose }) {
             <Button size="sm" variant="ghost" onClick={() => void handleExportClick()} disabled={folderBusy}>
               {language === "zh" ? "匯出備份" : "Export backup"}
             </Button>
-            <Button size="sm" variant="ghost" onClick={handleFilePick}>
+            <Button size="sm" variant="ghost" onClick={() => void handleImportClick()} disabled={importBusy}>
               {language === "zh" ? "匯入備份" : "Import backup"}
             </Button>
           </div>
